@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RoomZey – Find Your Perfect Room, PG & Hostel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/main.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">Room<span>Zey</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="property-list.html">Listings</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="add-property.html">List Property</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="login.html" class="btn btn-outline">Login</a>
+      <a href="register.html" class="btn btn-primary">Get Started</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-badge">🏠 India's Smartest Room Finder</div>
+    <h1 class="hero-title">Find Your <em>Perfect</em><br>Room & PG</h1>
+    <p class="hero-subtitle">Discover thousands of verified rooms, PGs, flats and hostels near your college or workplace
+      — no brokerage.</p>
+
+    <div class="hero-search-box">
+      <input type="text" class="search-input" id="heroSearch" placeholder="Search by city, location, or college..."
+        autocomplete="off">
+      <div class="search-divider"></div>
+      <select class="search-select" id="heroType">
+        <option value="">All Types</option>
+        <option value="pg">PG</option>
+        <option value="single">Single Room</option>
+        <option value="double">Double Sharing</option>
+        <option value="flat_1bhk">1 BHK Flat</option>
+        <option value="flat_2bhk">2 BHK Flat</option>
+        <option value="hostel">Hostel</option>
+      </select>
+      <button class="btn btn-primary" onclick="doSearch()">
+        🔍 Search
+      </button>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num" id="totalProps">2,400+</div>
+        <div class="stat-label">Verified Listings</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Cities Covered</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">10K+</div>
+        <div class="stat-label">Happy Tenants</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Brokerage Fees</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPULAR CITIES -->
+  <section class="section" style="background:white">
+    <div class="section-header">
+      <span class="section-tag">Browse by City</span>
+      <h2 class="section-title">Popular Cities</h2>
+      <p class="section-subtitle">Find rooms in India's top student and professional cities</p>
+    </div>
+    <div class="cities-grid container">
+      <div class="city-card" onclick="searchCity('Mumbai')">
+        <div class="city-icon">🌆</div>
+        <div class="city-name">Mumbai</div>
+        <div class="city-count">420+ listings</div>
+      </div>
+      <div class="city-card" onclick="searchCity('Delhi')">
+        <div class="city-icon">🏛️</div>
+        <div class="city-name">Delhi</div>
+        <div class="city-count">380+ listings</div>
+      </div>
+      <div class="city-card" onclick="searchCity('Bangalore')">
+        <div class="city-icon">💻</div>
+        <div class="city-name">Bangalore</div>
+        <div class="city-count">510+ listings</div>
+      </div>
+      <div class="city-card" onclick="searchCity('Pune')">
+        <div class="city-icon">🎓</div>
+        <div class="city-name">Pune</div>
+        <div class="city-count">290+ listings</div>
+      </div>
+      <div class="city-card" onclick="searchCity('Hyderabad')">
+        <div class="city-icon">💊</div>
+        <div class="city-name">Hyderabad</div>
+        <div class="city-count">310+ listings</div>
+      </div>
+      <div class="city-card" onclick="searchCity('Chennai')">
+        <div class="city-icon">🌊</div>
+        <div class="city-name">Chennai</div>
+        <div class="city-count">260+ listings</div>
+      </div>
+      <div class="city-card" onclick="searchCity('Kolkata')">
+        <div class="city-icon">🎨</div>
+        <div class="city-name">Kolkata</div>
+        <div class="city-count">195+ listings</div>
+      </div>
+      <div class="city-card" onclick="searchCity('Jaipur')">
+        <div class="city-icon">🏰</div>
+        <div class="city-name">Jaipur</div>
+        <div class="city-count">180+ listings</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED LISTINGS -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-tag">Featured</span>
+      <h2 class="section-title">Latest Listings</h2>
+      <p class="section-subtitle">Fresh, verified properties added by trusted owners</p>
+    </div>
+    <div class="properties-grid container" id="featuredGrid">
+      <!-- Loaded via JS -->
+      <div style="grid-column:1/-1; text-align:center; padding:3rem">
+        <div class="spinner"></div>
+        <p style="color:var(--mid); margin-top:1rem">Loading properties…</p>
+      </div>
+    </div>
+    <div class="text-center mt-3">
+      <a href="property-list.html" class="btn btn-outline" style="font-size:1rem; padding:0.8rem 2rem">View All Listings
+        →</a>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" style="background: linear-gradient(135deg, var(--dark) 0%, var(--dark-2) 100%)">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(255,92,56,0.2);color:#FF8B6B">How It Works</span>
+      <h2 class="section-title" style="color:white">Find Your Room in 3 Simple Steps</h2>
+    </div>
+    <div
+      style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:2rem; max-width:900px; margin:0 auto">
+      <div style="text-align:center; padding:2rem">
+        <div
+          style="width:64px;height:64px;border-radius:20px;background:rgba(255,92,56,0.2);border:1px solid rgba(255,92,56,0.3);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 1rem">
+          🔍</div>
+        <h3 style="color:white;margin-bottom:0.5rem">1. Search</h3>
+        <p style="color:rgba(255,255,255,0.5); font-size:0.9rem">Search by city, area, budget or room type</p>
+      </div>
+      <div style="text-align:center; padding:2rem">
+        <div
+          style="width:64px;height:64px;border-radius:20px;background:rgba(0,201,167,0.15);border:1px solid rgba(0,201,167,0.3);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 1rem">
+          🏠</div>
+        <h3 style="color:white;margin-bottom:0.5rem">2. Explore</h3>
+        <p style="color:rgba(255,255,255,0.5); font-size:0.9rem">View photos, amenities and owner details</p>
+      </div>
+      <div style="text-align:center; padding:2rem">
+        <div
+          style="width:64px;height:64px;border-radius:20px;background:rgba(255,92,56,0.2);border:1px solid rgba(255,92,56,0.3);display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 1rem">
+          📞</div>
+        <h3 style="color:white;margin-bottom:0.5rem">3. Connect</h3>
+        <p style="color:rgba(255,255,255,0.5); font-size:0.9rem">Contact owner directly — zero brokerage</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="section" style="background:white">
+    <div
+      style="max-width:700px; margin:0 auto; text-align:center; background:linear-gradient(135deg,var(--brand) 0%,#FF8C5A 100%); border-radius:24px; padding:3rem; color:white">
+      <h2 style="font-size:2rem; margin-bottom:1rem">Are you a Property Owner?</h2>
+      <p style="opacity:0.85; margin-bottom:2rem">List your property for free and connect with thousands of tenants
+        looking for rooms right now.</p>
+      <a href="add-property.html" class="btn"
+        style="background:white;color:var(--brand);font-size:1rem;padding:0.9rem 2rem">List Your Property Free →</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Room<span>Zey</span></div>
+        <p class="footer-desc">India's trusted platform to find verified rooms, PGs, flats and hostels near colleges and
+          workplaces — with zero brokerage.</p>
+      </div>
+      <div>
+        <div class="footer-heading">Explore</div>
+        <ul class="footer-links">
+          <li><a href="property-list.html">All Listings</a></li>
+          <li><a href="property-list.html?room_type=pg">PG Rooms</a></li>
+          <li><a href="property-list.html?room_type=hostel">Hostels</a></li>
+          <li><a href="property-list.html?room_type=flat_1bhk">Flats</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Account</div>
+        <ul class="footer-links">
+          <li><a href="login.html">Login</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="add-property.html">List Property</a></li>
+          <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Company</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 RoomZey. All rights reserved. Made with ❤️ for students & professionals.</div>
+  </footer>
+
+  <script src="../static/js/api.js"></script>
+  <script>
+    function doSearch() {
+      const q = document.getElementById('heroSearch').value.trim();
+      const t = document.getElementById('heroType').value;
+      const params = new URLSearchParams();
+      if (q) params.set('search', q);
+      if (t) params.set('room_type', t);
+      window.location.href = `property-list.html?${params}`;
+    }
+
+    document.getElementById('heroSearch').addEventListener('keydown', e => {
+      if (e.key === 'Enter') doSearch();
+    });
+
+    function searchCity(city) {
+      window.location.href = `property-list.html?city=${encodeURIComponent(city)}`;
+    }
+
+    async function loadFeatured() {
+      const grid = document.getElementById('featuredGrid');
+      try {
+        const data = await api.get('/properties/?ordering=-created_at');
+        const props = data.results || data;
+        if (!props || props.length === 0) {
+          grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--mid)">
+        <div style="font-size:3rem;margin-bottom:1rem">🏠</div>
+        <p>No listings yet. Be the first to <a href="add-property.html" style="color:var(--brand)">add a property!</a></p>
+      </div>`;
+          return;
+        }
+        grid.innerHTML = props.slice(0, 6).map(propertyCardHTML).join('');
+        document.getElementById('totalProps').textContent = (data.count || props.length) + '+';
+      } catch (e) {
+        grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem">
+      <div style="color:var(--mid); margin-bottom:1rem">Could not load listings. Make sure the backend is running.</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;opacity:0.35;pointer-events:none">
+        ${[1, 2, 3].map(() => `<div style="height:300px;background:var(--border);border-radius:16px"></div>`).join('')}
+      </div>
+    </div>`;
+      }
+    }
+
+    loadFeatured();
+  </script>
+</body>
+
+</html>

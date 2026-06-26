@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Rooms & PGs – RoomZey</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../static/css/main.css">
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVYx_qWBNaPbwmrfLw1-_zRPvps8bgQw4&callback=Function.prototype"
+    async defer></script>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">Room<span>Zey</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="property-list.html" class="active">Listings</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="add-property.html">List Property</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="login.html" class="btn btn-outline">Login</a>
+      <a href="register.html" class="btn btn-primary">Get Started</a>
+    </div>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <!-- Search Bar -->
+  <div style="background:white; border-bottom:1px solid var(--border); padding:1rem 2rem; margin-top:72px">
+    <div style="max-width:1200px; margin:0 auto; display:flex; gap:1rem; flex-wrap:wrap; align-items:center">
+      <input type="text" class="form-input" id="searchInput" placeholder="🔍 Search city, area, property name..."
+        style="flex:1; min-width:200px; margin-bottom:0">
+      <select class="form-select" id="cityFilter" style="min-width:140px; margin-bottom:0">
+        <option value="">All Cities</option>
+        <option>Mumbai</option>
+        <option>Delhi</option>
+        <option>Bangalore</option>
+        <option>Pune</option>
+        <option>Hyderabad</option>
+        <option>Chennai</option>
+        <option>Kolkata</option>
+        <option>Jaipur</option>
+      </select>
+      <button class="btn btn-primary" onclick="applyFilters()">Search</button>
+      <button class="btn btn-ghost" onclick="clearFilters()" style="white-space:nowrap">Clear All</button>
+    </div>
+  </div>
+
+  <div class="page-layout" style="padding-top:2rem">
+    <!-- FILTERS -->
+    <aside class="filters-panel">
+      <div class="filters-title">
+        <span>Filters</span>
+        <button class="btn btn-ghost" style="font-size:0.8rem;padding:4px 10px" onclick="clearFilters()">Reset</button>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Room Type</span>
+        <div class="filter-options">
+          <label class="filter-option"><input type="checkbox" name="room_type" value="single"> Single Room</label>
+          <label class="filter-option"><input type="checkbox" name="room_type" value="double"> Double Sharing</label>
+          <label class="filter-option"><input type="checkbox" name="room_type" value="triple"> Triple Sharing</label>
+          <label class="filter-option"><input type="checkbox" name="room_type" value="flat_1bhk"> 1 BHK Flat</label>
+          <label class="filter-option"><input type="checkbox" name="room_type" value="flat_2bhk"> 2 BHK Flat</label>
+          <label class="filter-option"><input type="checkbox" name="room_type" value="pg"> PG</label>
+          <label class="filter-option"><input type="checkbox" name="room_type" value="hostel"> Hostel</label>
+          <label class="filter-option"><input type="checkbox" name="room_type" value="studio"> Studio</label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Budget (₹/month)</span>
+        <div class="price-range">
+          <div class="range-inputs">
+            <input type="number" class="range-input" id="minPrice" placeholder="Min ₹" min="0">
+            <input type="number" class="range-input" id="maxPrice" placeholder="Max ₹" max="200000">
+          </div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap">
+            <button class="btn btn-ghost" style="font-size:0.75rem;padding:4px 10px" onclick="setPrice(0, 5000)">Under
+              5K</button>
+            <button class="btn btn-ghost" style="font-size:0.75rem;padding:4px 10px"
+              onclick="setPrice(5000, 10000)">5K-10K</button>
+            <button class="btn btn-ghost" style="font-size:0.75rem;padding:4px 10px"
+              onclick="setPrice(10000, 20000)">10K-20K</button>
+            <button class="btn btn-ghost" style="font-size:0.75rem;padding:4px 10px"
+              onclick="setPrice(20000, 0)">20K+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Furnishing</span>
+        <div class="filter-options">
+          <label class="filter-option"><input type="radio" name="furnished" value=""> Any</label>
+          <label class="filter-option"><input type="radio" name="furnished" value="furnished"> Fully Furnished</label>
+          <label class="filter-option"><input type="radio" name="furnished" value="semi"> Semi Furnished</label>
+          <label class="filter-option"><input type="radio" name="furnished" value="unfurnished"> Unfurnished</label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Gender Preference</span>
+        <div class="filter-options">
+          <label class="filter-option"><input type="radio" name="gender" value=""> Any</label>
+          <label class="filter-option"><input type="radio" name="gender" value="any"> Co-ed</label>
+          <label class="filter-option"><input type="radio" name="gender" value="male"> Boys Only</label>
+          <label class="filter-option"><input type="radio" name="gender" value="female"> Girls Only</label>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Amenities</span>
+        <div class="filter-options">
+          <label class="filter-option"><input type="checkbox" name="amenity" value="wifi"> 📶 WiFi</label>
+          <label class="filter-option"><input type="checkbox" name="amenity" value="ac"> ❄️ AC</label>
+          <label class="filter-option"><input type="checkbox" name="amenity" value="parking"> 🚗 Parking</label>
+          <label class="filter-option"><input type="checkbox" name="amenity" value="food"> 🍽️ Meals Included</label>
+          <label class="filter-option"><input type="checkbox" name="amenity" value="gym"> 💪 Gym</label>
+          <label class="filter-option"><input type="checkbox" name="amenity" value="security"> 🔒 Security</label>
+        </div>
+      </div>
+
+      <button class="btn btn-primary" style="width:100%; justify-content:center" onclick="applyFilters()">Apply
+        Filters</button>
+    </aside>
+
+    <!-- RESULTS -->
+    <main>
+      <div
+        style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; flex-wrap:wrap; gap:1rem">
+        <div>
+          <h1 style="font-size:1.5rem; margin-bottom:0.25rem" id="resultsTitle">All Listings</h1>
+          <p style="color:var(--mid); font-size:0.9rem" id="resultsCount">Loading...</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:0.75rem; flex-wrap:wrap">
+          <div class="view-toggle">
+            <button class="view-toggle-btn active" id="listViewBtn" onclick="switchView('list')">📋 List</button>
+            <button class="view-toggle-btn" id="mapViewBtn" onclick="switchView('map')">🗺️ Map</button>
+          </div>
+          <span style="font-size:0.85rem; color:var(--mid)">Sort:</span>
+          <select class="form-select" id="sortBy" style="margin-bottom:0; min-width:160px" onchange="applyFilters()">
+            <option value="-created_at">Newest First</option>
+            <option value="price">Price: Low to High</option>
+            <option value="-price">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Active filters chips -->
+      <div id="activeFilters" style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:1rem"></div>
+
+      <div class="properties-grid" id="listingsGrid">
+        <div style="grid-column:1/-1; text-align:center; padding:3rem">
+          <div class="spinner"></div>
+        </div>
+      </div>
+
+      <!-- Map View -->
+      <div id="mapViewContainer"></div>
+
+      <div class="pagination" id="pagination"></div>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-bottom">© 2025 RoomZey · <a href="index.html" style="color:var(--brand)">Home</a></div>
+  </footer>
+
+  <script src="../static/js/api.js"></script>
+  <script>
+    let currentPage = 1;
+    const PAGE_SIZE = 12;
+
+    function getFilters() {
+      const params = new URLSearchParams();
+      const search = document.getElementById('searchInput').value.trim();
+      const city = document.getElementById('cityFilter').value;
+      const minPrice = document.getElementById('minPrice').value;
+      const maxPrice = document.getElementById('maxPrice').value;
+      const sort = document.getElementById('sortBy').value;
+
+      if (search) params.set('search', search);
+      if (city) params.set('city', city);
+      if (minPrice) params.set('min_price', minPrice);
+      if (maxPrice) params.set('max_price', maxPrice);
+      if (sort) params.set('ordering', sort);
+
+      // Room types (multiple)
+      const roomTypes = [...document.querySelectorAll('[name="room_type"]:checked')].map(el => el.value);
+      if (roomTypes.length === 1) params.set('room_type', roomTypes[0]);
+
+      // Furnished
+      const furnished = document.querySelector('[name="furnished"]:checked')?.value;
+      if (furnished) params.set('furnished_status', furnished);
+
+      // Gender
+      const gender = document.querySelector('[name="gender"]:checked')?.value;
+      if (gender) params.set('gender_preference', gender);
+
+      // Amenities
+      document.querySelectorAll('[name="amenity"]:checked').forEach(el => {
+        params.set(el.value, 'true');
+      });
+
+      params.set('page', currentPage);
+      return params;
+    }
+
+    function setPrice(min, max) {
+      document.getElementById('minPrice').value = min || '';
+      document.getElementById('maxPrice').value = max || '';
+      applyFilters();
+    }
+
+    function clearFilters() {
+      document.getElementById('searchInput').value = '';
+      document.getElementById('cityFilter').value = '';
+      document.getElementById('minPrice').value = '';
+      document.getElementById('maxPrice').value = '';
+      document.querySelectorAll('[name="room_type"], [name="amenity"]').forEach(el => el.checked = false);
+      document.querySelectorAll('[name="furnished"], [name="gender"]').forEach(el => { if (el.value === '') el.checked = true; });
+      currentPage = 1;
+      loadListings();
+    }
+
+    let allLoadedProps = [];
+
+    async function loadListings() {
+      const grid = document.getElementById('listingsGrid');
+      const countEl = document.getElementById('resultsCount');
+      grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem"><div class="spinner"></div></div>`;
+
+      try {
+        const params = getFilters();
+        const data = await api.get(`/properties/?${params}`);
+        const props = data.results || data;
+        const total = data.count || props.length;
+        allLoadedProps = props;
+
+        countEl.textContent = `${total} properties found`;
+        document.getElementById('resultsTitle').textContent = params.get('city') ? `Rooms in ${params.get('city')}` : 'All Listings';
+
+        if (!props || props.length === 0) {
+          grid.innerHTML = `<div style="grid-column:1/-1" class="empty-state">
+        <div class="empty-icon">🏠</div>
+        <div class="empty-title">No properties found</div>
+        <p>Try adjusting your filters or search query</p>
+      </div>`;
+          clearMapMarkers();
+          return;
+        }
+
+        grid.innerHTML = props.map(propertyCardHTML).join('');
+        renderPagination(total, data.count ? PAGE_SIZE : null);
+        // Refresh map markers if map view is active
+        updateMapMarkers(props);
+      } catch (e) {
+        console.error(e);
+        grid.innerHTML = `<div style="grid-column:1/-1" class="empty-state">
+      <div class="empty-icon">⚠️</div>
+      <div class="empty-title">Could not load listings</div>
+      <p>Make sure the backend server is running on port 8000</p>
+    </div>`;
+        countEl.textContent = 'Error loading';
+      }
+    }
+
+    function renderPagination(total, pageSize) {
+      if (!pageSize) return;
+      const totalPages = Math.ceil(total / pageSize);
+      const container = document.getElementById('pagination');
+      if (totalPages <= 1) { container.innerHTML = ''; return; }
+
+      let html = '';
+      if (currentPage > 1) html += `<button class="page-btn" onclick="goPage(${currentPage - 1})">←</button>`;
+      for (let i = 1; i <= totalPages; i++) {
+        if (i === 1 || i === totalPages || Math.abs(i - currentPage) <= 2) {
+          html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goPage(${i})">${i}</button>`;
+        } else if (Math.abs(i - currentPage) === 3) {
+          html += `<span style="padding:0 4px;color:var(--mid)">…</span>`;
+        }
+      }
+      if (currentPage < totalPages) html += `<button class="page-btn" onclick="goPage(${currentPage + 1})">→</button>`;
+      container.innerHTML = html;
+    }
+
+    function goPage(page) {
+      currentPage = page;
+      loadListings();
+      window.scrollTo({ top: 72, behavior: 'smooth' });
+    }
+
+    function applyFilters() {
+      currentPage = 1;
+      loadListings();
+    }
+
+    // Load from URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('search')) document.getElementById('searchInput').value = urlParams.get('search');
+    if (urlParams.get('city')) document.getElementById('cityFilter').value = urlParams.get('city');
+    if (urlParams.get('room_type')) {
+      const cb = document.querySelector(`[name="room_type"][value="${urlParams.get('room_type')}"]`);
+      if (cb) cb.checked = true;
+    }
+
+    loadListings();
+
+    // Add filter change listeners
+    document.querySelectorAll('[name="room_type"], [name="amenity"], [name="furnished"], [name="gender"]').forEach(el => {
+      el.addEventListener('change', applyFilters);
+    });
+
+    /* ===== Map View Toggle ===== */
+    let listMap = null;
+    let mapMarkers = [];
+    let mapInfoWindow = null;
+    let currentView = 'list';
+
+    function switchView(view) {
+      currentView = view;
+      const grid = document.getElementById('listingsGrid');
+      const mapContainer = document.getElementById('mapViewContainer');
+      const pagination = document.getElementById('pagination');
+      const listBtn = document.getElementById('listViewBtn');
+      const mapBtn = document.getElementById('mapViewBtn');
+
+      if (view === 'map') {
+        grid.style.display = 'none';
+        pagination.style.display = 'none';
+        mapContainer.style.display = 'block';
+        listBtn.classList.remove('active');
+        mapBtn.classList.add('active');
+        initListMap();
+        updateMapMarkers(allLoadedProps);
+      } else {
+        grid.style.display = '';
+        pagination.style.display = '';
+        mapContainer.style.display = 'none';
+        listBtn.classList.add('active');
+        mapBtn.classList.remove('active');
+      }
+    }
+
+    function initListMap() {
+      if (listMap) return;
+      if (typeof google === 'undefined') {
+        setTimeout(initListMap, 500);
+        return;
+      }
+      const defaultCenter = { lat: 20.5937, lng: 78.9629 };
+      listMap = new google.maps.Map(document.getElementById('mapViewContainer'), {
+        center: defaultCenter,
+        zoom: 5,
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: true,
+        styles: [
+          { featureType: 'poi', stylers: [{ visibility: 'simplified' }] },
+          { featureType: 'transit', stylers: [{ visibility: 'off' }] }
+        ]
+      });
+      mapInfoWindow = new google.maps.InfoWindow();
+    }
+
+    function clearMapMarkers() {
+      mapMarkers.forEach(m => m.setMap(null));
+      mapMarkers = [];
+    }
+
+    function updateMapMarkers(props) {
+      if (!listMap || currentView !== 'map') return;
+      clearMapMarkers();
+
+      const bounds = new google.maps.LatLngBounds();
+      let hasMarkers = false;
+
+      props.forEach(p => {
+        if (!p.latitude || !p.longitude) return;
+        const pos = { lat: parseFloat(p.latitude), lng: parseFloat(p.longitude) };
+        const marker = new google.maps.Marker({
+          position: pos,
+          map: listMap,
+          title: p.title,
+          animation: google.maps.Animation.DROP
+        });
+
+        marker.addListener('click', () => {
+          const content = `
+        <div class="map-info-window">
+          <h4>${p.title}</h4>
+          <div class="map-info-price">${formatPrice(p.price)}<span style="font-size:0.75rem;color:var(--mid);font-weight:400"> / month</span></div>
+          <div class="map-info-location">📍 ${p.location}, ${p.city}</div>
+          <a href="property-details.html?id=${p.id}">View Details →</a>
+        </div>
+      `;
+          mapInfoWindow.setContent(content);
+          mapInfoWindow.open(listMap, marker);
+        });
+
+        mapMarkers.push(marker);
+        bounds.extend(pos);
+        hasMarkers = true;
+      });
+
+      if (hasMarkers) {
+        listMap.fitBounds(bounds);
+        if (listMap.getZoom() > 15) listMap.setZoom(15);
+      }
+    }
+  </script>
+</body>
+
+</html>
