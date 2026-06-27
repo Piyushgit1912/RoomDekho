@@ -64,3 +64,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'roomies_db',
+        'USER':'root',
+        'PASSWORD':'0809',
+        'HOST':'localhost',
+        'PORT':'3306',
+    }
+}
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
