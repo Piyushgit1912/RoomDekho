@@ -7,3 +7,7 @@ class CustomUser(AbstractUser):
         ('tenant', 'Tenant'),
         ('owner', 'Owner'),
         ('admin', 'Admin'),
+    ]
+    name = models.CharField(max_length=150)
+    phone = models.CharField(max_length=15, blank=True)
+    user_type = models.CharField(max_length=10, choices=USER_TYPE_CHOICES, default='tenant')
