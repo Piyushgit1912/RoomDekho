@@ -24,3 +24,7 @@ class Favorite(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        unique_together = ('user', 'property')
+
+    def __str__(self):
+        return f"{self.user.name} → {self.property.title}"
