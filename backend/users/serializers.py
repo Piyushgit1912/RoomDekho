@@ -43,3 +43,12 @@ class UserLoginSerializer(serializers.Serializer):
 
 
 class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['id', 'name', 'email', 'username', 'phone', 'user_type', 'profile_image', 'created_at']
+        read_only_fields = ['id', 'email', 'created_at']
+
+
+class FavoriteSerializer(serializers.ModelSerializer):
+    property_title = serializers.CharField(source='property.title', read_only=True)
+    property_city = serializers.CharField(source='property.city', read_only=True)
