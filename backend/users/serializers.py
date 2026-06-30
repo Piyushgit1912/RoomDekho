@@ -61,3 +61,11 @@ class FavoriteSerializer(serializers.ModelSerializer):
         fields = ['id', 'property', 'property_title', 'property_city',
                   'property_price', 'property_image', 'created_at']
         read_only_fields = ['id', 'created_at']
+
+    def get_property_image(self, obj):
+        first = obj.property.images.first()
+        if first and first.image:
+            request = self.context.get('request')
+            if request:
+                return request.build_absolute_uri(first.image.url)
+        return None
