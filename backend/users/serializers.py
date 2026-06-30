@@ -25,3 +25,12 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
+
+class UserLoginSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    password = serializers.CharField()
+
+    def validate(self, data):
+        try:
+            user = CustomUser.objects.get(email=data['email'])
+        except CustomUser.DoesNotExist:
