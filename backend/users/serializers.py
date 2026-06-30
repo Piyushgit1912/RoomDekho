@@ -52,3 +52,12 @@ class UserProfileSerializer(serializers.ModelSerializer):
 class FavoriteSerializer(serializers.ModelSerializer):
     property_title = serializers.CharField(source='property.title', read_only=True)
     property_city = serializers.CharField(source='property.city', read_only=True)
+    property_price = serializers.DecimalField(
+        source='property.price', max_digits=10, decimal_places=2, read_only=True)
+    property_image = serializers.SerializerMethodField()
+
+    class Meta:
+        model = Favorite
+        fields = ['id', 'property', 'property_title', 'property_city',
+                  'property_price', 'property_image', 'created_at']
+        read_only_fields = ['id', 'created_at']
