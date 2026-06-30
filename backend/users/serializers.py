@@ -34,3 +34,12 @@ class UserLoginSerializer(serializers.Serializer):
         try:
             user = CustomUser.objects.get(email=data['email'])
         except CustomUser.DoesNotExist:
+            raise serializers.ValidationError("Invalid credentials.")
+        user = authenticate(username=user.username, password=data['password'])
+        if not user:
+            raise serializers.ValidationError("Invalid credentials.")
+        data['user'] = user
+        return data
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
