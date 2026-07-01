@@ -60,3 +60,12 @@ def profile(request):
 
 @api_view(['GET', 'POST'])
 def favorites(request):
+    if request.method == 'GET':
+        favs = Favorite.objects.filter(user=request.user).select_related('property')
+        serializer = FavoriteSerializer(favs, many=True, context={'request': request})
+        return Response(serializer.data)
+
+    property_id = request.data.get('property_id')
+    if not property_id:
+        return Response({'error': 'property_id is required.'}, status=status.HTTP_400_BAD_REQUEST)
+
