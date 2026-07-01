@@ -7,3 +7,12 @@ from .serializers import (UserRegisterSerializer, UserLoginSerializer,
                           UserProfileSerializer, FavoriteSerializer)
 
 
+@api_view(['POST'])
+@permission_classes([permissions.AllowAny])
+def register(request):
+    serializer = UserRegisterSerializer(data=request.data)
+    if serializer.is_valid():
+        user = serializer.save()
+        token, _ = Token.objects.get_or_create(user=user)
+        return Response({
+            'token': token.key,
