@@ -51,3 +51,12 @@ def profile(request):
     user = request.user
     if request.method == 'GET':
         return Response(UserProfileSerializer(user).data)
+    serializer = UserProfileSerializer(user, data=request.data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'POST'])
+def favorites(request):
