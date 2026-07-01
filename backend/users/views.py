@@ -69,3 +69,12 @@ def favorites(request):
     if not property_id:
         return Response({'error': 'property_id is required.'}, status=status.HTTP_400_BAD_REQUEST)
 
+    fav, created = Favorite.objects.get_or_create(
+        user=request.user, property_id=property_id)
+    if not created:
+        fav.delete()
+        return Response({'message': 'Removed from favorites.', 'favorited': False})
+    return Response({'message': 'Added to favorites.', 'favorited': True},
+                    status=status.HTTP_201_CREATED)
+
+
