@@ -43,3 +43,11 @@ def logout_view(request):
         request.user.auth_token.delete()
     except Exception:
         pass
+    return Response({'message': 'Logged out successfully.'})
+
+
+@api_view(['GET', 'PUT', 'PATCH'])
+def profile(request):
+    user = request.user
+    if request.method == 'GET':
+        return Response(UserProfileSerializer(user).data)
