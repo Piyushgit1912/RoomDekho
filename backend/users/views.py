@@ -87,3 +87,11 @@ def admin_users(request):
 
 
 @api_view(['DELETE'])
+@permission_classes([permissions.IsAdminUser])
+def admin_delete_user(request, pk):
+    try:
+        user = CustomUser.objects.get(pk=pk)
+        user.delete()
+        return Response({'message': 'User deleted.'})
+    except CustomUser.DoesNotExist:
+        return Response({'error': 'User not found.'}, status=status.HTTP_404_NOT_FOUND)
