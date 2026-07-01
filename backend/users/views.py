@@ -78,3 +78,12 @@ def favorites(request):
                     status=status.HTTP_201_CREATED)
 
 
+@api_view(['GET'])
+@permission_classes([permissions.IsAdminUser])
+def admin_users(request):
+    users = CustomUser.objects.all().order_by('-date_joined')
+    serializer = UserProfileSerializer(users, many=True)
+    return Response(serializer.data)
+
+
+@api_view(['DELETE'])
