@@ -34,3 +34,12 @@ def login(request):
             'user': UserProfileSerializer(user).data,
             'message': 'Login successful!'
         })
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def logout_view(request):
+    try:
+        request.user.auth_token.delete()
+    except Exception:
+        pass
