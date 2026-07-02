@@ -11,3 +11,8 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets + (
         ('Extra Info', {'fields': ('name', 'phone', 'user_type', 'profile_image')}),
     )
+
+
+@admin.register(Favorite)
+class FavoriteAdmin(admin.ModelAdmin):
+    list_display = ['user', 'property', 'created_at']
