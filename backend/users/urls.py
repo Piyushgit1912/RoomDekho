@@ -8,3 +8,5 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('favorites/', views.favorites, name='favorites'),
     path('admin/users/', views.admin_users, name='admin-users'),
+    path('admin/users/<int:pk>/', views.admin_delete_user, name='admin-delete-user'),
+]
