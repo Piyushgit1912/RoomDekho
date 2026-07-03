@@ -91,3 +91,16 @@ class Property(models.Model):
         if revs.exists():
             return round(sum(r.rating for r in revs) / revs.count(), 1)
         return 0
+
+    @property
+    def review_count(self):
+        return self.reviews.count()
+
+
+class PropertyImage(models.Model):
+    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='images')
+    image = models.ImageField(upload_to='properties/')
+    is_primary = models.BooleanField(default=False)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
