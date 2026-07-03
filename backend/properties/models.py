@@ -104,3 +104,16 @@ class PropertyImage(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
+        return f"Image – {self.property.title}"
+
+class PropertyVideo(models.Model):
+    property = models.ForeignKey(
+        Property,
+        on_delete=models.CASCADE,
+        related_name='videos'
+    )
+    video = models.FileField(upload_to='property_videos/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Video - {self.property.title}"
