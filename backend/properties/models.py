@@ -78,3 +78,16 @@ class Property(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name_plural = 'Properties'
+
+    def __str__(self):
+        return f"{self.title} – {self.city}"
+
+    @property
+    def avg_rating(self):
+        revs = self.reviews.all()
+        if revs.exists():
+            return round(sum(r.rating for r in revs) / revs.count(), 1)
+        return 0
