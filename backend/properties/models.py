@@ -65,3 +65,16 @@ class Property(models.Model):
     wifi = models.BooleanField(default=False)
     parking = models.BooleanField(default=False)
     ac = models.BooleanField(default=False)
+    laundry = models.BooleanField(default=False)
+    food = models.BooleanField(default=False)
+    gym = models.BooleanField(default=False)
+    security = models.BooleanField(default=False)
+
+    # Contact
+    contact_phone = models.CharField(max_length=15, blank=True)
+    contact_email = models.EmailField(blank=True)
+
+    is_available = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
