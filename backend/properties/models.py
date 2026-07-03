@@ -25,3 +25,16 @@ class Property(models.Model):
         ('semi', 'Semi Furnished'),
         ('unfurnished', 'Unfurnished'),
     ]
+    GENDER_CHOICES = [
+        ('any', 'Any'),
+        ('male', 'Male Only'),
+        ('female', 'Female Only'),
+    ]
+    STATUS_CHOICES = [
+        ('pending', 'Pending Approval'),
+        ('approved', 'Approved'),
+        ('rejected', 'Rejected'),
+    ]
+
+    title = models.CharField(max_length=200)
+    description = models.TextField()
