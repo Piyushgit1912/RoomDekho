@@ -51,3 +51,17 @@ class Property(models.Model):
 
     independence_type= models.CharField(max_length=20,
                                         choices=INDEPENDENCE_CHOICES,
+                                        default='independent'
+                                        )
+    
+    furnished_status = models.CharField(max_length=15, choices=FURNISHED_CHOICES, default='unfurnished')
+
+    gender_preference = models.CharField(max_length=10, choices=GENDER_CHOICES, default='any')
+    
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='approved')
+    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='properties')
+
+    # Amenities
+    wifi = models.BooleanField(default=False)
+    parking = models.BooleanField(default=False)
+    ac = models.BooleanField(default=False)
