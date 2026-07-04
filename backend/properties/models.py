@@ -58,3 +58,18 @@ class Property(models.Model):
 
     gender_preference = models.CharField(max_length=10, choices=GENDER_CHOICES, default='any')
     
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='approved')
+    owner = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='properties')
+
+    # Amenities
+    wifi = models.BooleanField(default=False)
+    parking = models.BooleanField(default=False)
+    ac = models.BooleanField(default=False)
+    laundry = models.BooleanField(default=False)
+    food = models.BooleanField(default=False)
+    gym = models.BooleanField(default=False)
+    security = models.BooleanField(default=False)
+
+    # Contact
+    contact_phone = models.CharField(max_length=15, blank=True)
+    contact_email = models.EmailField(blank=True)
