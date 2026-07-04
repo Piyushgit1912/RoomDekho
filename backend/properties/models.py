@@ -73,3 +73,18 @@ class Property(models.Model):
     # Contact
     contact_phone = models.CharField(max_length=15, blank=True)
     contact_email = models.EmailField(blank=True)
+
+    is_available = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name_plural = 'Properties'
+
+    def __str__(self):
+        return f"{self.title} – {self.city}"
+
+    @property
+    def avg_rating(self):
+        revs = self.reviews.all()
