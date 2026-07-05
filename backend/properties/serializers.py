@@ -22,3 +22,15 @@ class PropertyVideoSerializer(serializers.ModelSerializer):
     class Meta:
         model = PropertyVideo
         fields = ['id', 'video', 'video_url']
+
+    def get_video_url(self, obj):
+        request = self.context.get('request')
+        if obj.video and request:
+            return request.build_absolute_uri(obj.video.url)
+        return None
+
+class PropertyListSerializer(serializers.ModelSerializer):
+    primary_image = serializers.SerializerMethodField()
+    image_count = serializers.SerializerMethodField()
+    owner_name = serializers.CharField(source='owner.name', read_only=True)
+    avg_rating = serializers.FloatField(read_only=True)
