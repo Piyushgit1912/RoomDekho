@@ -34,3 +34,15 @@ class PropertyListSerializer(serializers.ModelSerializer):
     image_count = serializers.SerializerMethodField()
     owner_name = serializers.CharField(source='owner.name', read_only=True)
     avg_rating = serializers.FloatField(read_only=True)
+    review_count = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model = Property
+        fields = [
+            'id', 'title', 'price', 'location', 'city', 'room_type',
+            'furnished_status', 'gender_preference', 'status',
+            'wifi', 'parking', 'ac', 'food', 'security',
+            'owner_name', 'primary_image', 'image_count', 'avg_rating', 'review_count',
+            'latitude', 'longitude',
+            'is_available', 'created_at',
+        ]
