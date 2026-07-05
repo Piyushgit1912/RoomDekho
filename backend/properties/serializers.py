@@ -46,3 +46,15 @@ class PropertyListSerializer(serializers.ModelSerializer):
             'latitude', 'longitude',
             'is_available', 'created_at',
         ]
+
+    def get_primary_image(self, obj):
+        request = self.context.get('request')
+        img = obj.images.filter(is_primary=True).first() or obj.images.first()
+        if img and img.image and request:
+            return request.build_absolute_uri(img.image.url)
+        return None
+
+    def get_image_count(self, obj):
+        return obj.images.count()
+
+
