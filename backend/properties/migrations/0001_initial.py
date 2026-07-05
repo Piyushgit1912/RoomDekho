@@ -37,3 +37,22 @@ class Migration(migrations.Migration):
                 ('contact_phone', models.CharField(blank=True, max_length=15)),
                 ('contact_email', models.EmailField(blank=True, max_length=254)),
                 ('is_available', models.BooleanField(default=True)),
+                ('created_at', models.DateTimeField(auto_now_add=True)),
+                ('updated_at', models.DateTimeField(auto_now=True)),
+            ],
+            options={
+                'verbose_name_plural': 'Properties',
+                'ordering': ['-created_at'],
+            },
+        ),
+        migrations.CreateModel(
+            name='PropertyImage',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('image', models.ImageField(upload_to='properties/')),
+                ('is_primary', models.BooleanField(default=False)),
+                ('uploaded_at', models.DateTimeField(auto_now_add=True)),
+                ('property', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='images', to='properties.property')),
+            ],
+        ),
+    ]
