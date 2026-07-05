@@ -58,3 +58,15 @@ class PropertyListSerializer(serializers.ModelSerializer):
         return obj.images.count()
 
 
+class PropertyDetailSerializer(serializers.ModelSerializer):
+    images = PropertyImageSerializer(many=True, read_only=True)
+    videos = PropertyVideoSerializer(many=True, read_only=True)
+    owner_name = serializers.CharField(source='owner.name', read_only=True)
+    owner_phone = serializers.CharField(source='owner.phone', read_only=True)
+    owner_email = serializers.EmailField(source='owner.email', read_only=True)
+    avg_rating = serializers.FloatField(read_only=True)
+    review_count = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model = Property
+        fields = '__all__'
