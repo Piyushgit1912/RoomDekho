@@ -40,3 +40,7 @@ class PropertyListSerializer(serializers.ModelSerializer):
         model = Property
         fields = [
             'id', 'title', 'price', 'location', 'city', 'room_type',
+            'furnished_status', 'gender_preference', 'status',
+            'wifi', 'parking', 'ac', 'food', 'security',
+            'owner_name', 'primary_image', 'image_count', 'avg_rating', 'review_count',
+            'latitude', 'longitude',
