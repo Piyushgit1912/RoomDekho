@@ -73,3 +73,7 @@ class PropertyDetailSerializer(serializers.ModelSerializer):
         read_only_fields = ['id', 'owner', 'created_at', 'updated_at']
 
 
+class PropertyCreateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Property
+        exclude = ['owner', 'status', 'is_available', 'created_at', 'updated_at']
