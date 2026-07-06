@@ -44,3 +44,7 @@ class PropertyListSerializer(serializers.ModelSerializer):
             'wifi', 'parking', 'ac', 'food', 'security',
             'owner_name', 'primary_image', 'image_count', 'avg_rating', 'review_count',
             'latitude', 'longitude',
+            'is_available', 'created_at',
+        ]
+
+    def get_primary_image(self, obj):
