@@ -57,3 +57,7 @@ class PropertyListSerializer(serializers.ModelSerializer):
     def get_image_count(self, obj):
         return obj.images.count()
 
+
+class PropertyDetailSerializer(serializers.ModelSerializer):
+    images = PropertyImageSerializer(many=True, read_only=True)
+    videos = PropertyVideoSerializer(many=True, read_only=True)
