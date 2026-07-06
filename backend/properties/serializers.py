@@ -65,3 +65,7 @@ class PropertyDetailSerializer(serializers.ModelSerializer):
     owner_phone = serializers.CharField(source='owner.phone', read_only=True)
     owner_email = serializers.EmailField(source='owner.email', read_only=True)
     avg_rating = serializers.FloatField(read_only=True)
+    review_count = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model = Property
