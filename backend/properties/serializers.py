@@ -52,3 +52,8 @@ class PropertyListSerializer(serializers.ModelSerializer):
         img = obj.images.filter(is_primary=True).first() or obj.images.first()
         if img and img.image and request:
             return request.build_absolute_uri(img.image.url)
+        return None
+
+    def get_image_count(self, obj):
+        return obj.images.count()
+
