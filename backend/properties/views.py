@@ -77,3 +77,23 @@ def property_detail(request, pk):
 def add_property(request):
     if request.user.user_type not in ['owner', 'admin']:
         return Response(
+            {'error': 'Only property owners can add listings.'},
+            status=status.HTTP_403_FORBIDDEN)
+
+    serializer = PropertyCreateSerializer(data=request.data, context={'request': request})
+    if serializer.is_valid():
+        prop = serializer.save()
+        images = request.FILES.getlist('images')
+        for i, image in enumerate(images):
+            PropertyImage.objects.create(property=prop, image=image, is_primary=(i == 0))
+        
+        video=request.FILES.get('video')
+        if video:
+            PropertyVideo.objects.create(property=prop,video=video)
+        return Response({
+            'message': 'Property submitted for approval.',
+            'property': PropertyDetailSerializer(prop, context={'request': request}).data
+        }, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
