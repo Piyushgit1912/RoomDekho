@@ -97,3 +97,22 @@ def add_property(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
+@api_view(['PUT', 'PATCH'])
+@permission_classes([permissions.IsAuthenticated])
+def update_property(request, pk):
+    try:
+        prop = Property.objects.get(pk=pk, owner=request.user)
+    except Property.DoesNotExist:
+        return Response({'error': 'Not found or unauthorized.'}, status=status.HTTP_404_NOT_FOUND)
+    serializer = PropertyDetailSerializer(prop, data=request.data, partial=True)
+    if serializer.is_valid():
+        serializer.save(status='approved')
+        return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['DELETE'])
+@permission_classes([permissions.IsAuthenticated])
+def delete_property(request, pk):
+    try:
+        if request.user.is_staff:
