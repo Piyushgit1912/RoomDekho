@@ -136,3 +136,22 @@ def my_properties(request):
 @api_view(['GET'])
 @permission_classes([permissions.IsAdminUser])
 def admin_properties(request):
+    props = Property.objects.all().prefetch_related('images')
+    status_filter = request.query_params.get('status', '')
+    if status_filter:
+        props = props.filter(status=status_filter)
+    serializer = PropertyListSerializer(props, many=True, context={'request': request})
+    return Response(serializer.data)
+
+
+@api_view(['POST'])
+@permission_classes([permissions.IsAdminUser])
+def admin_approve_property(request, pk):
+    try:
+        prop = Property.objects.get(pk=pk)
+        action = request.data.get('action', 'approve')
+        prop.status = 'approved' if action == 'approve' else 'rejected'
+        prop.save()
+        return Response({'message': f'Property {prop.status}.'})
+    except Property.DoesNotExist:
+        return Response({'error': 'Property not found.'}, status=status.HTTP_404_NOT_FOUND)
