@@ -116,3 +116,23 @@ def update_property(request, pk):
 def delete_property(request, pk):
     try:
         if request.user.is_staff:
+            prop = Property.objects.get(pk=pk)
+        else:
+            prop = Property.objects.get(pk=pk, owner=request.user)
+    except Property.DoesNotExist:
+        return Response({'error': 'Not found or unauthorized.'}, status=status.HTTP_404_NOT_FOUND)
+    prop.delete()
+    return Response({'message': 'Property deleted.'})
+
+
+@api_view(['GET'])
+@permission_classes([permissions.IsAuthenticated])
+def my_properties(request):
+    props = Property.objects.filter(owner=request.user).prefetch_related('images')
+    serializer = PropertyListSerializer(props, many=True, context={'request': request})
+    return Response(serializer.data)
+
+
+@api_view(['GET'])
+@permission_classes([permissions.IsAdminUser])
+def admin_properties(request):
