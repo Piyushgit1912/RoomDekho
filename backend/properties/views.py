@@ -57,3 +57,23 @@ class PropertyListView(generics.ListAPIView):
 
 @api_view(['GET'])
 @permission_classes([permissions.AllowAny])
+def property_detail(request, pk):
+    try:
+        prop = Property.objects.prefetch_related('images', 'reviews').get(pk=pk)
+        if prop.status != 'approved':
+            is_owner = request.user.is_authenticated and prop.owner == request.user
+            is_admin = request.user.is_authenticated and (request.user.is_staff or request.user.user_type == 'admin')
+            if not (is_owner or is_admin):
+                return Response({'error': 'Property not found.'}, status=status.HTTP_404_NOT_FOUND)
+    except Property.DoesNotExist:
+        return Response({'error': 'Property not found.'}, status=status.HTTP_404_NOT_FOUND)
+    serializer = PropertyDetailSerializer(prop, context={'request': request})
+    return Response(serializer.data)
+
+
+@api_view(['POST'])
+@parser_classes([MultiPartParser, FormParser])
+@permission_classes([permissions.IsAuthenticated])
+def add_property(request):
+    if request.user.user_type not in ['owner', 'admin']:
+        return Response(
