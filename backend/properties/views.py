@@ -38,3 +38,22 @@ class PropertyListView(generics.ListAPIView):
         if p.get('max_price'):
             qs = qs.filter(price__lte=p['max_price'])
 
+        for amenity in ['wifi', 'parking', 'ac', 'food', 'gym', 'security']:
+            if p.get(amenity) == 'true':
+                qs = qs.filter(**{amenity: True})
+
+        ordering = p.get('ordering', '-created_at')
+        allowed_orderings = ['price', '-price', '-created_at', 'created_at']
+        if ordering in allowed_orderings:
+            qs = qs.order_by(ordering)
+
+        return qs
+
+    def get_serializer_context(self):
+        ctx = super().get_serializer_context()
+        ctx['request'] = self.request
+        return ctx
+
+
+@api_view(['GET'])
+@permission_classes([permissions.AllowAny])
