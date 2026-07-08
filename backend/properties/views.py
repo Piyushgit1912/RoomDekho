@@ -123,3 +123,7 @@ def delete_property(request, pk):
         return Response({'error': 'Not found or unauthorized.'}, status=status.HTTP_404_NOT_FOUND)
     prop.delete()
     return Response({'message': 'Property deleted.'})
+
+
+@api_view(['GET'])
+@permission_classes([permissions.IsAuthenticated])
