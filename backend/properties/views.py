@@ -127,3 +127,8 @@ def delete_property(request, pk):
 
 @api_view(['GET'])
 @permission_classes([permissions.IsAuthenticated])
+def my_properties(request):
+    props = Property.objects.filter(owner=request.user).prefetch_related('images')
+    serializer = PropertyListSerializer(props, many=True, context={'request': request})
+    return Response(serializer.data)
+
