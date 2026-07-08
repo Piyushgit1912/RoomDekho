@@ -137,3 +137,7 @@ def my_properties(request):
 @permission_classes([permissions.IsAdminUser])
 def admin_properties(request):
     props = Property.objects.all().prefetch_related('images')
+    status_filter = request.query_params.get('status', '')
+    if status_filter:
+        props = props.filter(status=status_filter)
+    serializer = PropertyListSerializer(props, many=True, context={'request': request})
