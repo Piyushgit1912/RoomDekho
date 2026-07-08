@@ -141,3 +141,8 @@ def admin_properties(request):
     if status_filter:
         props = props.filter(status=status_filter)
     serializer = PropertyListSerializer(props, many=True, context={'request': request})
+    return Response(serializer.data)
+
+
+@api_view(['POST'])
+@permission_classes([permissions.IsAdminUser])
