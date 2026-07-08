@@ -113,3 +113,8 @@ def update_property(request, pk):
 
 @api_view(['DELETE'])
 @permission_classes([permissions.IsAuthenticated])
+def delete_property(request, pk):
+    try:
+        if request.user.is_staff:
+            prop = Property.objects.get(pk=pk)
+        else:
