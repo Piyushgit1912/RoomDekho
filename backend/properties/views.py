@@ -146,3 +146,8 @@ def admin_properties(request):
 
 @api_view(['POST'])
 @permission_classes([permissions.IsAdminUser])
+def admin_approve_property(request, pk):
+    try:
+        prop = Property.objects.get(pk=pk)
+        action = request.data.get('action', 'approve')
+        prop.status = 'approved' if action == 'approve' else 'rejected'
