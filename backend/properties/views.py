@@ -132,3 +132,8 @@ def my_properties(request):
     serializer = PropertyListSerializer(props, many=True, context={'request': request})
     return Response(serializer.data)
 
+
+@api_view(['GET'])
+@permission_classes([permissions.IsAdminUser])
+def admin_properties(request):
+    props = Property.objects.all().prefetch_related('images')
