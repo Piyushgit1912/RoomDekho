@@ -151,3 +151,7 @@ def admin_approve_property(request, pk):
         prop = Property.objects.get(pk=pk)
         action = request.data.get('action', 'approve')
         prop.status = 'approved' if action == 'approve' else 'rejected'
+        prop.save()
+        return Response({'message': f'Property {prop.status}.'})
+    except Property.DoesNotExist:
+        return Response({'error': 'Property not found.'}, status=status.HTTP_404_NOT_FOUND)
