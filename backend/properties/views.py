@@ -118,3 +118,8 @@ def delete_property(request, pk):
         if request.user.is_staff:
             prop = Property.objects.get(pk=pk)
         else:
+            prop = Property.objects.get(pk=pk, owner=request.user)
+    except Property.DoesNotExist:
+        return Response({'error': 'Not found or unauthorized.'}, status=status.HTTP_404_NOT_FOUND)
+    prop.delete()
+    return Response({'message': 'Property deleted.'})
