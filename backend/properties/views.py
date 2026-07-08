@@ -108,3 +108,8 @@ def update_property(request, pk):
     if serializer.is_valid():
         serializer.save(status='approved')
         return Response(serializer.data)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['DELETE'])
+@permission_classes([permissions.IsAuthenticated])
