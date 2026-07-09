@@ -23,3 +23,7 @@ class PropertyAdmin(admin.ModelAdmin):
         queryset.update(status='rejected')
     reject_properties.short_description = "❌ Reject selected"
 
+
+@admin.register(PropertyImage)
+class PropertyImageAdmin(admin.ModelAdmin):
+    list_display = ['property', 'is_primary', 'uploaded_at']
