@@ -16,3 +16,10 @@ class PropertyAdmin(admin.ModelAdmin):
     actions = ['approve_properties', 'reject_properties']
 
     def approve_properties(self, request, queryset):
+        queryset.update(status='approved')
+    approve_properties.short_description = "✅ Approve selected"
+
+    def reject_properties(self, request, queryset):
+        queryset.update(status='rejected')
+    reject_properties.short_description = "❌ Reject selected"
+
