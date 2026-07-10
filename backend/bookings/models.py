@@ -4,3 +4,5 @@ from properties.models import Property
 
 
 class Booking(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
