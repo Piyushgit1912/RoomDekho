@@ -14,3 +14,6 @@ class Booking(models.Model):
     message = models.TextField()
     contact_number = models.CharField(max_length=15)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
+    visit_date = models.DateField(null=True, blank=True)
+    date = models.DateTimeField(auto_now_add=True)
+
