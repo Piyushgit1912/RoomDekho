@@ -9,3 +9,6 @@ class Booking(models.Model):
         ('accepted', 'Accepted'),
         ('rejected', 'Rejected'),
     ]
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='bookings')
+    property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='bookings')
+    message = models.TextField()
