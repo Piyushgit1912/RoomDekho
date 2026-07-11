@@ -19,3 +19,13 @@ class Migration(migrations.Migration):
             name='Booking',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('message', models.TextField()),
+                ('contact_number', models.CharField(max_length=15)),
+                ('status', models.CharField(choices=[('pending', 'Pending'), ('accepted', 'Accepted'), ('rejected', 'Rejected')], default='pending', max_length=10)),
+                ('visit_date', models.DateField(blank=True, null=True)),
+                ('date', models.DateTimeField(auto_now_add=True)),
+                ('property', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='bookings', to='properties.property')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='bookings', to=settings.AUTH_USER_MODEL)),
+            ],
+        ),
+    ]
