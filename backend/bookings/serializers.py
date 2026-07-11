@@ -7,3 +7,5 @@ class BookingSerializer(serializers.ModelSerializer):
     property_city = serializers.CharField(source='property.city', read_only=True)
     user_name = serializers.CharField(source='user.name', read_only=True)
     user_email = serializers.EmailField(source='user.email', read_only=True)
+
+    class Meta:
