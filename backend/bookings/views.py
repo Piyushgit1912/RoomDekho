@@ -17,3 +17,9 @@ def create_inquiry(request):
 
 
 @api_view(['GET'])
+@permission_classes([permissions.IsAuthenticated])
+def my_inquiries(request):
+    bookings = Booking.objects.filter(user=request.user).select_related('property')
+    return Response(BookingSerializer(bookings, many=True).data)
+
+
