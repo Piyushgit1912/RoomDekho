@@ -5,3 +5,9 @@ from .models import Booking
 from .serializers import BookingSerializer
 
 
+@api_view(['POST'])
+@permission_classes([permissions.IsAuthenticated])
+def create_inquiry(request):
+    serializer = BookingSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save(user=request.user)
