@@ -29,3 +29,9 @@ def owner_inquiries(request):
     bookings = Booking.objects.filter(
         property__owner=request.user).select_related('property', 'user')
     return Response(BookingSerializer(bookings, many=True).data)
+
+
+@api_view(['PUT'])
+@permission_classes([permissions.IsAuthenticated])
+def update_inquiry_status(request, pk):
+    try:
