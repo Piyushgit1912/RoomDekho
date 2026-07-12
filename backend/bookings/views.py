@@ -35,3 +35,9 @@ def owner_inquiries(request):
 @permission_classes([permissions.IsAuthenticated])
 def update_inquiry_status(request, pk):
     try:
+        booking = Booking.objects.get(pk=pk, property__owner=request.user)
+    except Booking.DoesNotExist:
+        return Response({'error': 'Inquiry not found.'}, status=status.HTTP_404_NOT_FOUND)
+    booking.status = request.data.get('status', booking.status)
+    booking.save()
+    return Response(BookingSerializer(booking).data)
