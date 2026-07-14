@@ -14,3 +14,5 @@ class Review(models.Model):
     class Meta:
         unique_together = ('user', 'property')
 
+    def __str__(self):
+        return f"{self.user.name} rated {self.property.title} – {self.rating}/5"
