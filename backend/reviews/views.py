@@ -24,3 +24,11 @@ def reviews(request, property_id):
 
 
 @api_view(['DELETE'])
+@permission_classes([permissions.IsAuthenticated])
+def delete_review(request, pk):
+    try:
+        review = Review.objects.get(pk=pk, user=request.user)
+        review.delete()
+        return Response({'message': 'Review deleted.'})
+    except Review.DoesNotExist:
+        return Response({'error': 'Review not found.'}, status=status.HTTP_404_NOT_FOUND)
