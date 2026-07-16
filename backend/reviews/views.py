@@ -7,3 +7,11 @@ from .serializers import ReviewSerializer
 
 @api_view(['GET', 'POST'])
 def reviews(request, property_id):
+    if request.method == 'GET':
+        revs = Review.objects.filter(property_id=property_id).select_related('user')
+        return Response(ReviewSerializer(revs, many=True).data)
+
+    if not request.user.is_authenticated:
+        return Response({'error': 'Authentication required.'}, status=status.HTTP_401_UNAUTHORIZED)
+
+    data = request.data.copy()
