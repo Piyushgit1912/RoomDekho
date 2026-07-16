@@ -15,3 +15,12 @@ def reviews(request, property_id):
         return Response({'error': 'Authentication required.'}, status=status.HTTP_401_UNAUTHORIZED)
 
     data = request.data.copy()
+    data['property'] = property_id
+    serializer = ReviewSerializer(data=data)
+    if serializer.is_valid():
+        serializer.save(user=request.user)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['DELETE'])
