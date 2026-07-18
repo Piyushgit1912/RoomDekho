@@ -247,3 +247,14 @@
       if (e.key === 'Enter') doSearch();
     });
 
+    function searchCity(city) {
+      window.location.href = `property-list.html?city=${encodeURIComponent(city)}`;
+    }
+
+    async function loadFeatured() {
+      const grid = document.getElementById('featuredGrid');
+      try {
+        const data = await api.get('/properties/?ordering=-created_at');
+        const props = data.results || data;
+        if (!props || props.length === 0) {
+          grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--mid)">
