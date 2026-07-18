@@ -269,3 +269,9 @@
         grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem">
       <div style="color:var(--mid); margin-bottom:1rem">Could not load listings. Make sure the backend is running.</div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;opacity:0.35;pointer-events:none">
+        ${[1, 2, 3].map(() => `<div style="height:300px;background:var(--border);border-radius:16px"></div>`).join('')}
+      </div>
+    </div>`;
+      }
+    }
+
