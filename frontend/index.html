@@ -258,3 +258,14 @@
         const props = data.results || data;
         if (!props || props.length === 0) {
           grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--mid)">
+        <div style="font-size:3rem;margin-bottom:1rem">🏠</div>
+        <p>No listings yet. Be the first to <a href="add-property.html" style="color:var(--brand)">add a property!</a></p>
+      </div>`;
+          return;
+        }
+        grid.innerHTML = props.slice(0, 6).map(propertyCardHTML).join('');
+        document.getElementById('totalProps').textContent = (data.count || props.length) + '+';
+      } catch (e) {
+        grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem">
+      <div style="color:var(--mid); margin-bottom:1rem">Could not load listings. Make sure the backend is running.</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;opacity:0.35;pointer-events:none">
