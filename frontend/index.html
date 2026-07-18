@@ -235,3 +235,15 @@
   <script src="../static/js/api.js"></script>
   <script>
     function doSearch() {
+      const q = document.getElementById('heroSearch').value.trim();
+      const t = document.getElementById('heroType').value;
+      const params = new URLSearchParams();
+      if (q) params.set('search', q);
+      if (t) params.set('room_type', t);
+      window.location.href = `property-list.html?${params}`;
+    }
+
+    document.getElementById('heroSearch').addEventListener('keydown', e => {
+      if (e.key === 'Enter') doSearch();
+    });
+
