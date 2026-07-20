@@ -14,3 +14,19 @@
 <body>
 
   <nav class="navbar">
+    <a href="index.html" class="nav-brand">Room<span>Zey</span></a>
+    <div class="nav-actions">
+      <a href="register.html" class="btn btn-primary">Register</a>
+    </div>
+  </nav>
+
+  <div class="form-page">
+    <div class="form-card fade-in">
+      <h2 class="form-title">Welcome back 👋</h2>
+      <p class="form-subtitle" id="formSubtitle">Sign in to your RoomZey account</p>
+
+      <!-- Role Selection Tabs -->
+      <div class="login-tabs">
+        <button type="button" class="login-tab active" id="tabTenant" onclick="setLoginMode('tenant')">
+          🎓 Tenant Login
+        </button>
