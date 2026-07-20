@@ -30,3 +30,22 @@
         <button type="button" class="login-tab active" id="tabTenant" onclick="setLoginMode('tenant')">
           🎓 Tenant Login
         </button>
+        <button type="button" class="login-tab" id="tabOwner" onclick="setLoginMode('owner')">
+          🏠 Owner Login
+        </button>
+      </div>
+      <input type="hidden" name="user_type" id="userType" value="tenant">
+
+      <div id="alertBox"></div>
+
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" id="email" placeholder="you@example.com" autocomplete="email">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <div style="position:relative">
+          <input type="password" class="form-input" id="password" placeholder="Enter your password"
+            autocomplete="current-password">
+          <button onclick="togglePassword()"
