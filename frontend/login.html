@@ -88,3 +88,22 @@
       const input = document.getElementById('password');
       input.type = input.type === 'password' ? 'text' : 'password';
     }
+
+    // Update active tab and subtitle based on selected mode
+    function setLoginMode(mode) {
+      document.getElementById('userType').value = mode;
+      
+      const tabTenant = document.getElementById('tabTenant');
+      const tabOwner = document.getElementById('tabOwner');
+      const subtitle = document.getElementById('formSubtitle');
+      
+      if (mode === 'owner') {
+        tabOwner.classList.add('active');
+        tabTenant.classList.remove('active');
+        subtitle.innerHTML = 'Sign in as a <strong>Property Owner</strong> to manage your listings';
+      } else {
+        tabTenant.classList.add('active');
+        tabOwner.classList.remove('active');
+        subtitle.innerHTML = 'Sign in as a <strong>Tenant</strong> to find your perfect room';
+      }
+    }
