@@ -68,3 +68,23 @@
           <span>G</span> Google
         </button>
         <button class="btn btn-outline" style="flex:1; justify-content:center; gap:8px"
+          onclick="toast('Phone login coming soon!', 'info')">
+          📱 Phone
+        </button>
+      </div>
+
+      <p style="text-align:center; margin-top:1.5rem; font-size:0.9rem; color:var(--mid)">
+        Don't have an account? <a href="register.html" style="color:var(--brand); font-weight:600">Create one free</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="../static/js/api.js"></script>
+  <script>
+    // Redirect if already logged in
+    if (api.isLoggedIn()) window.location.href = 'index.html';
+
+    function togglePassword() {
+      const input = document.getElementById('password');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
