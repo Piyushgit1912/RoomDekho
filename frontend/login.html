@@ -107,3 +107,22 @@
         subtitle.innerHTML = 'Sign in as a <strong>Tenant</strong> to find your perfect room';
       }
     }
+
+    async function doLogin() {
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const btn = document.getElementById('loginBtn');
+      const alertBox = document.getElementById('alertBox');
+      const selectedType = document.getElementById('userType').value;
+
+      if (!email || !password) {
+        alertBox.innerHTML = `<div class="alert alert-error">Please fill in all fields.</div>`;
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Signing in…';
+
+      try {
+        const res = await api.post('/login/', { email, password });
+
