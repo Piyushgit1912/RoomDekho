@@ -19,3 +19,23 @@
 <div class="form-page">
   <div class="form-card fade-in" style="max-width:520px">
     <h2 class="form-title">Join RoomZey 🏠</h2>
+    <p class="form-subtitle">Create your free account to find or list rooms</p>
+
+    <div id="alertBox"></div>
+
+    <!-- Role Selection -->
+    <div class="user-type-select">
+      <div class="type-option">
+        <input type="radio" name="user_type" id="typeTenant" value="tenant" checked>
+        <label class="type-label" for="typeTenant">
+          <span class="type-icon">🎓</span>
+          <span>I'm a Tenant</span>
+          <span style="font-size:0.75rem; opacity:0.7">Looking for room</span>
+        </label>
+      </div>
+      <div class="type-option">
+        <input type="radio" name="user_type" id="typeOwner" value="owner">
+        <label class="type-label" for="typeOwner">
+          <span class="type-icon">🏠</span>
+          <span>I'm an Owner</span>
+          <span style="font-size:0.75rem; opacity:0.7">Listing property</span>
