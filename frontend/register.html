@@ -140,3 +140,20 @@ async function doRegister() {
     return;
   }
   if (data.password !== data.password2) {
+    alertBox.innerHTML = `<div class="alert alert-error">Passwords do not match.</div>`;
+    return;
+  }
+  if (!document.getElementById('terms').checked) {
+    alertBox.innerHTML = `<div class="alert alert-error">Please accept the Terms of Use.</div>`;
+    return;
+  }
+
+  btn.disabled = true; btn.textContent = 'Creating account…';
+
+  try {
+    const res = await api.post('/register/', data);
+    api.setAuth(res.token, res.user);
+    toast('Account created! Welcome to RoomZey 🎉', 'success');
+    setTimeout(() => window.location.href = data.user_type === 'owner' ? 'add-property.html' : 'property-list.html', 1000);
+  } catch(e) {
+    let msg = 'Registration failed. ';
