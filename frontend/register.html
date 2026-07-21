@@ -80,3 +80,23 @@
       <div style="height:4px; border-radius:2px; background:var(--border); overflow:hidden">
         <div id="strengthFill" style="height:100%; width:0; transition:all 0.3s; border-radius:2px"></div>
       </div>
+      <div id="strengthLabel" style="font-size:0.75rem; color:var(--mid); margin-top:4px"></div>
+    </div>
+
+    <div style="margin-bottom:1.5rem">
+      <label style="display:flex; align-items:flex-start; gap:10px; cursor:pointer; font-size:0.85rem; color:var(--mid)">
+        <input type="checkbox" id="terms" style="margin-top:3px; accent-color:var(--brand)">
+        <span>I agree to the <a href="#" style="color:var(--brand)">Terms of Use</a> and <a href="#" style="color:var(--brand)">Privacy Policy</a></span>
+      </label>
+    </div>
+
+    <button class="btn btn-primary btn-full" onclick="doRegister()" id="regBtn">Create Account</button>
+
+    <p style="text-align:center; margin-top:1.5rem; font-size:0.9rem; color:var(--mid)">
+      Already have an account? <a href="login.html" style="color:var(--brand); font-weight:600">Sign in</a>
+    </p>
+  </div>
+</div>
+
+<script src="../static/js/api.js"></script>
+<script>
