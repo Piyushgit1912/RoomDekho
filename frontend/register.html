@@ -59,3 +59,24 @@
       <input type="email" class="form-input" id="email" placeholder="rahul@example.com">
     </div>
 
+    <div class="form-group">
+      <label class="form-label">Phone Number</label>
+      <input type="tel" class="form-input" id="phone" placeholder="+91 98765 43210">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Password *</label>
+        <input type="password" class="form-input" id="password" placeholder="Min. 8 characters">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Confirm Password *</label>
+        <input type="password" class="form-input" id="password2" placeholder="Repeat password">
+      </div>
+    </div>
+
+    <!-- Password strength -->
+    <div id="strengthBar" style="margin-top:-0.75rem; margin-bottom:1rem; display:none">
+      <div style="height:4px; border-radius:2px; background:var(--border); overflow:hidden">
+        <div id="strengthFill" style="height:100%; width:0; transition:all 0.3s; border-radius:2px"></div>
+      </div>
