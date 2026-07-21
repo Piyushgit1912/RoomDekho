@@ -120,3 +120,23 @@ document.getElementById('password').addEventListener('input', function() {
   label.textContent = `Password strength: ${lv.l}`; label.style.color = lv.c;
 });
 
+async function doRegister() {
+  const alertBox = document.getElementById('alertBox');
+  alertBox.innerHTML = '';
+  const btn = document.getElementById('regBtn');
+
+  const data = {
+    name: document.getElementById('name').value.trim(),
+    username: document.getElementById('username').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    password: document.getElementById('password').value,
+    password2: document.getElementById('password2').value,
+    user_type: document.querySelector('[name="user_type"]:checked')?.value || 'tenant'
+  };
+
+  if (!data.name || !data.username || !data.email || !data.password) {
+    alertBox.innerHTML = `<div class="alert alert-error">Please fill in all required fields.</div>`;
+    return;
+  }
+  if (data.password !== data.password2) {
