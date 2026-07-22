@@ -126,3 +126,34 @@
       try {
         const res = await api.post('/login/', { email, password });
 
+        // Check if the user type matches the chosen login mode (allow admins to bypass this check)
+        const isAdminUser = res.user.user_type === 'admin' || res.user.is_staff || res.user.is_superuser;
+        if (!isAdminUser && res.user.user_type !== selectedType) {
+          alertBox.innerHTML = `<div class="alert alert-error">This account is registered as a ${res.user.user_type.charAt(0).toUpperCase() + res.user.user_type.slice(1)}, not a ${selectedType.charAt(0).toUpperCase() + selectedType.slice(1)}. Please choose the correct login mode above.</div>`;
+          btn.disabled = false;
+          btn.textContent = 'Sign In';
+          return;
+        }
+
+        api.setAuth(res.token, res.user);
+        toast('Login successful! Welcome back ' + res.user.name.split(' ')[0] + ' 👋', 'success');
+
+        // Redirect based on role unless next page is specified
+        const nextParam = new URLSearchParams(window.location.search).get('next');
+        const defaultRedirect = (selectedType === 'owner' || isAdminUser) ? 'dashboard.html' : 'property-list.html';
+        const redirect = nextParam || defaultRedirect;
+
+        setTimeout(() => window.location.href = redirect, 800);
+      } catch (e) {
+        const msg = e.non_field_errors?.[0] || e.detail || 'Login failed. Please check your credentials.';
+        alertBox.innerHTML = `<div class="alert alert-error">${msg}</div>`;
+        btn.disabled = false;
+        btn.textContent = 'Sign In';
+      }
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+  </script>
+</body>
+
+</html>
