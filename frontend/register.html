@@ -157,3 +157,13 @@ async function doRegister() {
     setTimeout(() => window.location.href = data.user_type === 'owner' ? 'add-property.html' : 'property-list.html', 1000);
   } catch(e) {
     let msg = 'Registration failed. ';
+    if (typeof e === 'object') {
+      msg = Object.entries(e).map(([k,v]) => `${k}: ${Array.isArray(v) ? v[0] : v}`).join('. ');
+    }
+    alertBox.innerHTML = `<div class="alert alert-error">${msg}</div>`;
+    btn.disabled = false; btn.textContent = 'Create Account';
+  }
+}
+</script>
+</body>
+</html>
