@@ -50,3 +50,16 @@ img { max-width: 100%; display: block; }
 }
 
 .navbar.scrolled { box-shadow: var(--shadow-md); }
+
+.nav-brand {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--dark);
+  display: flex; align-items: center; gap: 6px;
+}
+
+.nav-brand span { color: var(--brand); }
+
+.nav-links {
+  display: flex; align-items: center; gap: 2rem;
