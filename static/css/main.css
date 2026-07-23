@@ -102,3 +102,16 @@ img { max-width: 100%; display: block; }
 
 .btn-outline {
   background: transparent; color: var(--dark);
+  border: 1.5px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--brand); color: var(--brand); }
+
+.btn-ghost { background: transparent; color: var(--mid); }
+.btn-ghost:hover { color: var(--brand); background: var(--brand-light); }
+
+/* Hamburger */
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.hamburger span { width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: var(--transition); }
+
+/* ===== HERO ===== */
+.hero {
