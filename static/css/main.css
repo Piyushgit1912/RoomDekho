@@ -89,3 +89,16 @@ img { max-width: 100%; display: block; }
   padding: 0.65rem 1.4rem;
   border-radius: 50px;
   font-family: 'DM Sans', sans-serif;
+  font-weight: 500; font-size: 0.9rem;
+  border: none; cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-primary {
+  background: var(--brand); color: white;
+  box-shadow: 0 4px 14px rgba(255,92,56,0.35);
+}
+.btn-primary:hover { background: var(--brand-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255,92,56,0.45); }
+
+.btn-outline {
+  background: transparent; color: var(--dark);
