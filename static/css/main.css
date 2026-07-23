@@ -63,3 +63,16 @@ img { max-width: 100%; display: block; }
 
 .nav-links {
   display: flex; align-items: center; gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-weight: 500; font-size: 0.95rem;
+  color: var(--mid);
+  position: relative;
+}
+
+.nav-links a:hover, .nav-links a.active { color: var(--dark); }
+
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
