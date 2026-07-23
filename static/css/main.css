@@ -76,3 +76,16 @@ img { max-width: 100%; display: block; }
 
 .nav-links a::after {
   content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+  height: 2px; background: var(--brand);
+  transform: scaleX(0); transform-origin: left;
+  transition: var(--transition);
+}
+.nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+
+.nav-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: nowrap; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 0.65rem 1.4rem;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
