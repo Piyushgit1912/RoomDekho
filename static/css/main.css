@@ -180,3 +180,16 @@ img { max-width: 100%; display: block; }
 .search-divider { width: 1px; height: 28px; background: var(--border); }
 
 .search-select {
+  border: none; outline: none; background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem; color: var(--dark);
+  padding: 0.5rem 0.75rem; cursor: pointer; min-width: 130px;
+}
+
+.hero-stats {
+  display: flex; gap: 3rem; margin-top: 3rem;
+  position: relative; z-index: 1;
+  animation: fadeInUp 0.6s ease 0.4s both;
+}
+
+.stat { text-align: center; }
