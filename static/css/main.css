@@ -206,3 +206,16 @@ img { max-width: 100%; display: block; }
 }
 .section-title { font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--dark); margin-bottom: 0.75rem; }
 .section-subtitle { color: var(--mid); font-size: 1.05rem; max-width: 520px; margin: 0 auto; }
+
+/* ===== PROPERTY CARDS ===== */
+.properties-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px; margin: 0 auto;
+}
+
+.property-card {
+  background: white; border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
