@@ -115,3 +115,16 @@ img { max-width: 100%; display: block; }
 
 /* ===== HERO ===== */
 .hero {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0F1117 0%, #1A1D2E 50%, #252840 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 120px 2rem 80px;
+  position: relative; overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 40%, rgba(255,92,56,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 20% 70%, rgba(0,201,167,0.1) 0%, transparent 55%);
