@@ -326,3 +326,19 @@ img { max-width: 100%; display: block; }
 .range-inputs { display: flex; gap: 0.5rem; }
 .range-input {
   flex: 1; padding: 8px 12px; border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm); font-size: 0.85rem;
+  font-family: 'DM Sans', sans-serif; outline: none;
+  transition: var(--transition);
+}
+.range-input:focus { border-color: var(--brand); }
+
+/* ===== FORMS ===== */
+.form-page {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 100px 2rem 4rem;
+  background: linear-gradient(135deg, var(--light) 0%, #EEF2FF 100%);
+}
+
+.form-card {
+  background: white; border-radius: 24px;
+  padding: 2.5rem; width: 100%; max-width: 480px;
