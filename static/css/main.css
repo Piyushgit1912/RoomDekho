@@ -232,3 +232,18 @@ img { max-width: 100%; display: block; }
 .card-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
 .property-card:hover .card-image img { transform: scale(1.06); }
 
+.card-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: var(--brand); color: white;
+  font-size: 0.75rem; font-weight: 600;
+  padding: 4px 10px; border-radius: 50px;
+  text-transform: uppercase; letter-spacing: 0.04em;
+}
+
+.card-fav {
+  position: absolute; top: 12px; right: 12px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,0.9); border: none;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: var(--transition); font-size: 1rem;
+}
