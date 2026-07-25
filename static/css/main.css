@@ -310,3 +310,19 @@ img { max-width: 100%; display: block; }
 
 .filters-panel {
   background: white; border-radius: var(--radius);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  height: fit-content; position: sticky; top: 88px;
+}
+.filters-title { font-size: 1.1rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+.filter-group { margin-bottom: 1.5rem; }
+.filter-label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--mid); margin-bottom: 0.75rem; display: block; }
+
+.filter-options { display: flex; flex-direction: column; gap: 8px; }
+.filter-option { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.9rem; }
+.filter-option input[type="checkbox"], .filter-option input[type="radio"] { accent-color: var(--brand); width: 16px; height: 16px; }
+
+.price-range { display: flex; flex-direction: column; gap: 0.75rem; }
+.range-inputs { display: flex; gap: 0.5rem; }
+.range-input {
+  flex: 1; padding: 8px 12px; border: 1.5px solid var(--border);
