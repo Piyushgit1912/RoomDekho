@@ -247,3 +247,19 @@ img { max-width: 100%; display: block; }
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; transition: var(--transition); font-size: 1rem;
 }
+.card-fav:hover { background: white; transform: scale(1.1); }
+.card-fav.active { color: #e74c3c; }
+
+.card-body { padding: 1.25rem; }
+
+.card-price {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.4rem; font-weight: 800; color: var(--brand);
+  margin-bottom: 0.5rem;
+}
+.card-price span { font-size: 0.8rem; color: var(--mid); font-family: 'DM Sans', sans-serif; font-weight: 400; }
+
+.card-title { font-size: 1rem; font-weight: 600; color: var(--dark); margin-bottom: 0.4rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-location { font-size: 0.85rem; color: var(--mid); display: flex; align-items: center; gap: 4px; margin-bottom: 0.75rem; }
+
+.card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.75rem; }
