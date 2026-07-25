@@ -279,3 +279,19 @@ img { max-width: 100%; display: block; }
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   gap: 1rem;
+  max-width: 1000px; margin: 0 auto;
+}
+
+.city-card {
+  background: white; border-radius: var(--radius);
+  padding: 1.5rem 1rem; text-align: center;
+  border: 1.5px solid var(--border);
+  transition: var(--transition); cursor: pointer;
+}
+.city-card:hover { border-color: var(--brand); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.city-card:hover .city-icon { background: var(--brand); color: white; }
+
+.city-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: var(--brand-light); color: var(--brand);
+  display: flex; align-items: center; justify-content: center;
