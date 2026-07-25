@@ -263,3 +263,19 @@ img { max-width: 100%; display: block; }
 .card-location { font-size: 0.85rem; color: var(--mid); display: flex; align-items: center; gap: 4px; margin-bottom: 0.75rem; }
 
 .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 0.75rem; }
+.tag {
+  font-size: 0.75rem; color: var(--mid);
+  background: var(--light); border: 1px solid var(--border);
+  padding: 3px 10px; border-radius: 50px;
+}
+
+.card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+.card-rating { display: flex; align-items: center; gap: 4px; font-size: 0.85rem; font-weight: 600; color: var(--dark); }
+.stars { color: #F59E0B; letter-spacing: -2px; }
+.card-owner { font-size: 0.8rem; color: var(--mid); }
+
+/* ===== CITIES ===== */
+.cities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 1rem;
