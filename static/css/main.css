@@ -473,3 +473,14 @@ img { max-width: 100%; display: block; }
 #toast-container { position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; display: flex; flex-direction: column; gap: 0.75rem; }
 .toast {
   background: var(--dark-2); color: white; padding: 0.9rem 1.25rem;
+  border-radius: var(--radius-sm); font-size: 0.9rem;
+  box-shadow: var(--shadow-lg); min-width: 280px;
+  display: flex; align-items: center; gap: 10px;
+  animation: slideInRight 0.3s ease;
+  border-left: 4px solid var(--brand);
+}
+.toast.success { border-left-color: var(--accent); }
+.toast.error { border-left-color: #EF4444; }
+
+/* ===== FOOTER ===== */
+footer {
