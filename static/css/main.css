@@ -415,3 +415,15 @@ img { max-width: 100%; display: block; }
 .review-card {
   background: white; border-radius: var(--radius-sm);
   padding: 1.25rem; border: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+.review-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.75rem; }
+.reviewer-info { display: flex; align-items: center; gap: 10px; }
+.reviewer-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--brand-light); color: var(--brand);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-weight: 700;
+}
+
+/* ===== ADD PROPERTY ===== */
