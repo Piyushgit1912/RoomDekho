@@ -369,3 +369,15 @@ img { max-width: 100%; display: block; }
 
 .user-type-select { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem; }
 .type-option { position: relative; }
+.type-option input { position: absolute; opacity: 0; }
+.type-label {
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  padding: 1rem; border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+  cursor: pointer; transition: var(--transition);
+  font-size: 0.9rem; font-weight: 500; text-align: center;
+}
+.type-icon { font-size: 1.5rem; }
+.type-option input:checked + .type-label { border-color: var(--brand); background: var(--brand-light); color: var(--brand); }
+
+.form-divider { text-align: center; color: var(--mid); font-size: 0.85rem; margin: 1.25rem 0; position: relative; }
+.form-divider::before { content: ''; position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: var(--border); }
