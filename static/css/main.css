@@ -461,3 +461,15 @@ img { max-width: 100%; display: block; }
 .step-line { flex: 1; height: 2px; background: var(--border); }
 .step.active .step-dot { border-color: var(--brand); background: var(--brand); color: white; }
 .step.done .step-dot { border-color: var(--accent); background: var(--accent); color: white; }
+.step.done .step-line, .step.active .step-line { background: var(--brand); }
+
+/* ===== ALERTS ===== */
+.alert { padding: 1rem 1.25rem; border-radius: var(--radius-sm); margin-bottom: 1rem; font-size: 0.9rem; }
+.alert-success { background: rgba(0,201,167,0.1); border: 1px solid rgba(0,201,167,0.3); color: #007A65; }
+.alert-error { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #DC2626; }
+.alert-info { background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.3); color: #1D4ED8; }
+
+/* ===== TOAST ===== */
+#toast-container { position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; display: flex; flex-direction: column; gap: 0.75rem; }
+.toast {
+  background: var(--dark-2); color: white; padding: 0.9rem 1.25rem;
