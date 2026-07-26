@@ -358,3 +358,14 @@ img { max-width: 100%; display: block; }
   font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
   color: var(--dark); outline: none;
   transition: var(--transition); background: var(--light);
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  border-color: var(--brand); background: white;
+  box-shadow: 0 0 0 3px rgba(255,92,56,0.12);
+}
+.form-textarea { resize: vertical; min-height: 120px; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+.user-type-select { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem; }
+.type-option { position: relative; }
