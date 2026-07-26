@@ -404,3 +404,14 @@ img { max-width: 100%; display: block; }
 }
 .amenity-item.active { background: var(--brand-light); border-color: rgba(255,92,56,0.25); color: var(--brand); }
 .amenity-icon { font-size: 1.4rem; }
+
+.contact-card {
+  background: white; border-radius: var(--radius);
+  padding: 1.5rem; border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm); position: sticky; top: 88px;
+}
+
+/* ===== REVIEWS ===== */
+.review-card {
+  background: white; border-radius: var(--radius-sm);
+  padding: 1.25rem; border: 1px solid var(--border);
