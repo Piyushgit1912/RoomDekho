@@ -569,3 +569,13 @@ footer {
   .page-layout { grid-template-columns: 1fr; }
   .filters-panel { position: static; }
   .detail-layout { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .hero-stats { gap: 1.5rem; }
+  .property-gallery { grid-template-columns: 1fr; height: auto; }
+  .gallery-side { display: none; }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; flex-direction: column; position: fixed; top: 72px; left: 0; right: 0; background: white; padding: 1.5rem; border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md); }
+  .nav-links.open { display: flex; }
+  .hamburger { display: flex; }
