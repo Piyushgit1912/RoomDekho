@@ -590,3 +590,14 @@ footer {
 }
 
 /* ===== USER MENU DROPDOWN ===== */
+.user-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.user-menu-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 6px 12px;
