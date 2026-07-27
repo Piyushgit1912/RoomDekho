@@ -548,3 +548,13 @@ footer {
 .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
 /* ===== PAGINATION ===== */
+.pagination { display: flex; justify-content: center; gap: 6px; margin-top: 2.5rem; flex-wrap: wrap; }
+.page-btn { width: 40px; height: 40px; border-radius: var(--radius-sm); border: 1.5px solid var(--border); background: white; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; transition: var(--transition); }
+.page-btn:hover { border-color: var(--brand); color: var(--brand); }
+.page-btn.active { background: var(--brand); border-color: var(--brand); color: white; }
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
