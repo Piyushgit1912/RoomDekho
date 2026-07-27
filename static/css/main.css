@@ -579,3 +579,14 @@ footer {
   .nav-links { display: none; flex-direction: column; position: fixed; top: 72px; left: 0; right: 0; background: white; padding: 1.5rem; border-bottom: 1px solid var(--border); box-shadow: var(--shadow-md); }
   .nav-links.open { display: flex; }
   .hamburger { display: flex; }
+  .properties-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .hero-search-box { flex-direction: column; border-radius: var(--radius-sm); }
+  .search-divider { width: 100%; height: 1px; }
+  .search-select { width: 100%; }
+  .hero-stats { flex-wrap: wrap; justify-content: center; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* ===== USER MENU DROPDOWN ===== */
