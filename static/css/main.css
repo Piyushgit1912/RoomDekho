@@ -505,3 +505,14 @@ footer {
 .empty-state { text-align: center; padding: 4rem 2rem; color: var(--mid); }
 .empty-icon { font-size: 4rem; margin-bottom: 1rem; opacity: 0.5; }
 .empty-title { font-size: 1.2rem; font-weight: 600; color: var(--dark); margin-bottom: 0.5rem; }
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+  display: none; align-items: center; justify-content: center; z-index: 5000;
+  backdrop-filter: blur(4px);
+  padding: 1rem;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: white; border-radius: 24px;
