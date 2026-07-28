@@ -667,3 +667,20 @@ footer {
   gap: 8px;
   padding: 10px 16px;
   font-size: 0.9rem;
+  color: var(--dark);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.user-dropdown-item:hover {
+  background: var(--brand-light);
+  color: var(--brand);
+}
+
+.user-dropdown-item.logout {
+  color: #EF4444;
+  border-top: 1px solid var(--border);
+  margin-top: 4px;
+}
+
+.user-dropdown-item.logout:hover {
