@@ -684,3 +684,19 @@ footer {
 }
 
 .user-dropdown-item.logout:hover {
+  background: #FEF2F2;
+  color: #EF4444;
+}
+
+/* ===== RESPONSIVE DESKTOP NAVBAR BUTTONS HIDING ===== */
+@media (max-width: 1024px) {
+  .nav-btn-desktop {
+    display: none !important;
+  }
+}
+
+/* ===== LOGIN & REGISTER TABS ===== */
+.login-tabs {
+  display: flex;
+  background: var(--light);
+  border-radius: 50px;
