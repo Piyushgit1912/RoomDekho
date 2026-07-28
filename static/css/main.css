@@ -634,3 +634,19 @@ footer {
 
 .user-menu.open .user-dropdown,
 .user-menu:hover .user-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.user-dropdown-info {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+  background: var(--light);
+}
+
+.user-dropdown-name {
+  font-weight: 700;
+  color: var(--dark);
+  white-space: nowrap;
