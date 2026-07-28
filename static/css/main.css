@@ -650,3 +650,20 @@ footer {
   font-weight: 700;
   color: var(--dark);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-dropdown-role {
+  font-size: 0.75rem;
+  color: var(--mid);
+  text-transform: capitalize;
+  margin-top: 2px;
+}
+
+.user-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
