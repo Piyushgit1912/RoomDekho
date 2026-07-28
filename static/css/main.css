@@ -700,3 +700,20 @@ footer {
   display: flex;
   background: var(--light);
   border-radius: 50px;
+  padding: 4px;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border);
+}
+.login-tab {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 10px 16px;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  color: var(--mid);
+  transition: var(--transition);
+  display: flex;
