@@ -759,3 +759,14 @@ footer {
   border-radius: 50px;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.85rem; font-weight: 500;
+  border: 1.5px solid var(--border);
+  background: white; color: var(--dark);
+  cursor: pointer; transition: var(--transition);
+}
+.location-btn:hover {
+  border-color: var(--accent); color: var(--accent);
+  background: rgba(0,201,167,0.06);
+}
+.location-btn.loading { opacity: 0.6; pointer-events: none; }
+
+.map-coords-display {
