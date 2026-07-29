@@ -738,3 +738,14 @@ footer {
   border: 1.5px solid var(--border);
   overflow: hidden;
   margin-top: 0.5rem;
+  transition: var(--transition);
+}
+.map-container:hover { border-color: var(--brand); }
+
+.map-search-wrapper {
+  position: relative;
+}
+.map-search-wrapper .form-input {
+  padding-left: 2.5rem;
+}
+.map-search-icon {
