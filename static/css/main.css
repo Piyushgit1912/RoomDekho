@@ -833,3 +833,13 @@ footer {
   padding: 14px 16px; min-width: 220px; font-family: 'DM Sans', sans-serif;
 }
 .map-info-window h4 {
+  font-family: 'Syne', sans-serif; font-size: 0.95rem;
+  margin-bottom: 4px; color: var(--dark);
+}
+.map-info-window .map-info-price {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  color: var(--brand); font-size: 1.1rem; margin-bottom: 6px;
+}
+.map-info-window .map-info-location {
+  font-size: 0.8rem; color: var(--mid); margin-bottom: 8px;
+}
