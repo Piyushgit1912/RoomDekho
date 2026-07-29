@@ -791,3 +791,13 @@ footer {
   font-size: 0.85rem; font-weight: 500;
   cursor: pointer; transition: var(--transition);
   color: var(--mid);
+  display: flex; align-items: center; gap: 6px;
+}
+.view-toggle-btn:hover { color: var(--dark); }
+.view-toggle-btn.active {
+  background: white; color: var(--brand);
+  box-shadow: var(--shadow-sm);
+}
+
+#mapViewContainer {
+  width: 100%; height: 550px;
