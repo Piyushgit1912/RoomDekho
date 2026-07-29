@@ -822,3 +822,14 @@ footer {
   padding: 1rem 1.25rem;
   background: var(--light); border-radius: var(--radius-sm);
   border: 1px solid var(--border);
+  font-size: 0.9rem; color: var(--mid);
+  margin-bottom: 1.5rem;
+}
+
+/* Maps InfoWindow styling */
+.gm-style .gm-style-iw-c { border-radius: 12px !important; padding: 0 !important; }
+.gm-style .gm-style-iw-d { overflow: hidden !important; padding: 0 !important; }
+.map-info-window {
+  padding: 14px 16px; min-width: 220px; font-family: 'DM Sans', sans-serif;
+}
+.map-info-window h4 {
