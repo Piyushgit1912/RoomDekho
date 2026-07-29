@@ -770,3 +770,13 @@ footer {
 .location-btn.loading { opacity: 0.6; pointer-events: none; }
 
 .map-coords-display {
+  display: flex; gap: 1rem; margin-top: 0.5rem;
+  font-size: 0.8rem; color: var(--mid);
+}
+.map-coords-display span {
+  background: var(--light); padding: 4px 10px;
+  border-radius: 50px; border: 1px solid var(--border);
+}
+
+/* View Toggle (property-list) */
+.view-toggle {
