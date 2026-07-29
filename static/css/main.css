@@ -812,3 +812,13 @@ footer {
   padding: 1.5rem; border: 1px solid var(--border);
   margin-bottom: 1.5rem;
 }
+.detail-map-section .map-container { height: 300px; margin-top: 1rem; }
+.detail-map-actions {
+  display: flex; gap: 0.75rem; margin-top: 1rem; flex-wrap: wrap;
+}
+
+.no-location-msg {
+  display: flex; align-items: center; gap: 10px;
+  padding: 1rem 1.25rem;
+  background: var(--light); border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
