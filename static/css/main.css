@@ -717,3 +717,14 @@ footer {
   color: var(--mid);
   transition: var(--transition);
   display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.login-tab:hover {
+  color: var(--brand);
+}
+.login-tab.active {
+  background: white;
+  color: var(--brand);
+  box-shadow: var(--shadow-sm);
