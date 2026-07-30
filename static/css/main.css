@@ -955,3 +955,17 @@ footer {
 .tenant-warning-title {
   font-family: 'Syne', sans-serif; font-size: 1.5rem;
   font-weight: 700; color: var(--dark); margin-bottom: 0.75rem;
+}
+.tenant-warning-text {
+  color: var(--mid); font-size: 0.95rem;
+  line-height: 1.7; margin-bottom: 2rem; max-width: 400px; margin-left: auto; margin-right: auto;
+}
+
+/* ===== RESPONSIVE LIGHTBOX ===== */
+@media (max-width: 768px) {
+  .lightbox-img { max-width: 96vw; max-height: 80vh; }
+  .lightbox-prev { left: 8px; width: 40px; height: 40px; }
+  .lightbox-next { right: 8px; width: 40px; height: 40px; }
+  .lightbox-close { top: 12px; right: 12px; width: 38px; height: 38px; }
+  .gallery-show-all { bottom: 8px; right: 8px; font-size: 0.8rem; padding: 6px 12px; }
+}
