@@ -871,3 +871,17 @@ footer {
   object-fit: contain; border-radius: 8px;
   animation: scaleIn 0.25s ease;
   user-select: none;
+}
+
+.lightbox-close {
+  position: absolute; top: 20px; right: 24px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.15); border: none;
+  color: white; font-size: 1.4rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition); z-index: 9001;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.3); }
+
+.lightbox-prev, .lightbox-next {
+  position: absolute; top: 50%; transform: translateY(-50%);
