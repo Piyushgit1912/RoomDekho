@@ -899,3 +899,17 @@ footer {
   position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
   color: rgba(255,255,255,0.7); font-size: 0.9rem;
   font-family: 'DM Sans', sans-serif; z-index: 9001;
+}
+
+/* ===== GALLERY ENHANCEMENTS ===== */
+.property-gallery { position: relative; }
+.gallery-main, .gallery-side img { cursor: pointer; }
+
+.gallery-show-all {
+  position: absolute; bottom: 16px; right: 16px;
+  background: rgba(255,255,255,0.95); color: var(--dark);
+  border: 1px solid var(--border);
+  padding: 8px 16px; border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; transition: var(--transition);
