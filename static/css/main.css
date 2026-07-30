@@ -857,3 +857,17 @@ footer {
 
 /* ===== LIGHTBOX ===== */
 .lightbox-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9000;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.lightbox-overlay.open { opacity: 1; visibility: visible; }
+
+.lightbox-img {
+  max-width: 90vw; max-height: 85vh;
+  object-fit: contain; border-radius: 8px;
+  animation: scaleIn 0.25s ease;
+  user-select: none;
