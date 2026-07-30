@@ -913,3 +913,17 @@ footer {
   font-family: 'DM Sans', sans-serif;
   font-size: 0.85rem; font-weight: 600;
   cursor: pointer; transition: var(--transition);
+  display: flex; align-items: center; gap: 6px;
+  box-shadow: var(--shadow-sm);
+  z-index: 10;
+}
+.gallery-show-all:hover { background: white; box-shadow: var(--shadow-md); }
+
+/* ===== PHOTO COUNT BADGE (Listing Cards) ===== */
+.card-photo-count {
+  position: absolute; bottom: 10px; left: 10px;
+  background: rgba(0,0,0,0.65); color: white;
+  font-size: 0.75rem; font-weight: 600;
+  padding: 4px 10px; border-radius: 50px;
+  display: flex; align-items: center; gap: 4px;
+  backdrop-filter: blur(4px);
