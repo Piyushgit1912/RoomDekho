@@ -885,3 +885,17 @@ footer {
 
 .lightbox-prev, .lightbox-next {
   position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,0.15); border: none;
+  color: white; font-size: 1.4rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: var(--transition); z-index: 9001;
+}
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+.lightbox-prev:hover, .lightbox-next:hover { background: rgba(255,255,255,0.3); }
+
+.lightbox-counter {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+  color: rgba(255,255,255,0.7); font-size: 0.9rem;
+  font-family: 'DM Sans', sans-serif; z-index: 9001;
