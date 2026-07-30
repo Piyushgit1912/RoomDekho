@@ -843,3 +843,17 @@ footer {
 .map-info-window .map-info-location {
   font-size: 0.8rem; color: var(--mid); margin-bottom: 8px;
 }
+.map-info-window a {
+  display: inline-block; font-size: 0.8rem; font-weight: 600;
+  color: var(--brand); padding: 4px 0;
+}
+.map-info-window a:hover { text-decoration: underline; }
+
+@media (max-width: 768px) {
+  .map-container { height: 280px; }
+  #mapViewContainer { height: 400px; }
+  .detail-map-section .map-container { height: 220px; }
+}
+
+/* ===== LIGHTBOX ===== */
+.lightbox-overlay {
