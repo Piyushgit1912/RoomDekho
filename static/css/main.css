@@ -927,3 +927,17 @@ footer {
   padding: 4px 10px; border-radius: 50px;
   display: flex; align-items: center; gap: 4px;
   backdrop-filter: blur(4px);
+}
+
+/* ===== OWN LISTING BADGE ===== */
+.own-listing-badge {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--light); border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.9rem 1.2rem; font-size: 0.9rem;
+  color: var(--mid); font-weight: 500;
+  width: 100%; justify-content: center;
+}
+
+/* ===== TENANT WARNING CARD ===== */
+.tenant-warning-card {
