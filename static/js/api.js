@@ -17,3 +17,7 @@ const api = {
     try {
       const res = await fetch(`${API_BASE}${endpoint}`, opts);
       const json = await res.json();
+      if (!res.ok) throw json;
+      return json;
+    } catch(err) {
+      throw err;
