@@ -26,3 +26,7 @@ const api = {
 
   get: (e) => api.request('GET', e),
   post: (e, d) => api.request('POST', e, d),
+  put: (e, d) => api.request('PUT', e, d),
+  patch: (e, d) => api.request('PATCH', e, d),
+  delete: (e) => api.request('DELETE', e),
+  upload: (e, fd) => api.request('POST', e, fd, true),
