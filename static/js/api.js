@@ -12,3 +12,8 @@ const api = {
   },
 
   async request(method, endpoint, data = null, isFormData = false) {
+    const opts = { method, headers: isFormData ? { Authorization: `Token ${this.token}` } : this.headers() };
+    if (data) opts.body = isFormData ? data : JSON.stringify(data);
+    try {
+      const res = await fetch(`${API_BASE}${endpoint}`, opts);
+      const json = await res.json();
