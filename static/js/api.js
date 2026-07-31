@@ -21,3 +21,8 @@ const api = {
       return json;
     } catch(err) {
       throw err;
+    }
+  },
+
+  get: (e) => api.request('GET', e),
+  post: (e, d) => api.request('POST', e, d),
