@@ -30,3 +30,8 @@ const api = {
   patch: (e, d) => api.request('PATCH', e, d),
   delete: (e) => api.request('DELETE', e),
   upload: (e, fd) => api.request('POST', e, fd, true),
+
+  setAuth(token, user) {
+    this.token = token;
+    this.user = user;
+    localStorage.setItem('rd_token', token);
