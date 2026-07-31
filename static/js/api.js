@@ -39,3 +39,8 @@ const api = {
   },
 
   clearAuth() {
+    this.token = null;
+    this.user = null;
+    localStorage.removeItem('rd_token');
+    localStorage.removeItem('rd_user');
+  },
