@@ -44,3 +44,7 @@ const api = {
     localStorage.removeItem('rd_token');
     localStorage.removeItem('rd_user');
   },
+
+  isLoggedIn() { return !!this.token; },
+  isOwner() { return this.user?.user_type === 'owner'; },
+  isAdmin() { return this.user?.user_type === 'admin' || this.user?.is_staff; }
