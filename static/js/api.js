@@ -35,3 +35,7 @@ const api = {
     this.token = token;
     this.user = user;
     localStorage.setItem('rd_token', token);
+    localStorage.setItem('rd_user', JSON.stringify(user));
+  },
+
+  clearAuth() {
