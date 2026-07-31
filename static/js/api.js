@@ -8,3 +8,7 @@ const api = {
   headers(extra = {}) {
     const h = { 'Content-Type': 'application/json', ...extra };
     if (this.token) h['Authorization'] = `Token ${this.token}`;
+    return h;
+  },
+
+  async request(method, endpoint, data = null, isFormData = false) {
