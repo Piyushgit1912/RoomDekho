@@ -61,3 +61,7 @@ function toast(msg, type = 'info') {
   const el = document.createElement('div');
   const icons = { success: '✓', error: '✕', info: 'ℹ' };
   el.className = `toast ${type}`;
+  el.innerHTML = `<span>${icons[type] || 'ℹ'}</span><span>${msg}</span>`;
+  container.appendChild(el);
+  setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateX(40px)'; el.style.transition = 'all 0.3s'; setTimeout(() => el.remove(), 300); }, 3500);
+}
