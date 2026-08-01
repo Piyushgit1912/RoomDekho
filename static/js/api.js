@@ -94,3 +94,7 @@ function initNavbar() {
           <div style="width:36px;height:36px;border-radius:50%;background:var(--brand-light);color:var(--brand);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem">
             ${(api.user?.name || 'U')[0].toUpperCase()}
           </div>
+          <span style="font-size:0.9rem;font-weight:500;color:var(--dark)">${api.user?.name?.split(' ')[0]}</span>
+          <span style="font-size:0.6rem;color:var(--mid);margin-left:2px">▼</span>
+        </div>
+        <div class="user-dropdown">
