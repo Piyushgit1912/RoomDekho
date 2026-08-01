@@ -65,3 +65,7 @@ function toast(msg, type = 'info') {
   container.appendChild(el);
   setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateX(40px)'; el.style.transition = 'all 0.3s'; setTimeout(() => el.remove(), 300); }, 3500);
 }
+
+/* ===== Navbar ===== */
+function initNavbar() {
+  const navbar = document.querySelector('.navbar');
