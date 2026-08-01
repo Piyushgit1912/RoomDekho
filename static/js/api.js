@@ -69,3 +69,7 @@ function toast(msg, type = 'info') {
 /* ===== Navbar ===== */
 function initNavbar() {
   const navbar = document.querySelector('.navbar');
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
+
+  window.addEventListener('scroll', () => {
