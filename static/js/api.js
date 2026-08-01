@@ -77,3 +77,7 @@ function initNavbar() {
     else navbar?.classList.remove('scrolled');
   });
 
+  hamburger?.addEventListener('click', () => navLinks?.classList.toggle('open'));
+
+  // Auth state in navbar
+  const navActions = document.querySelector('.nav-actions');
