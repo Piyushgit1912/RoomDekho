@@ -57,3 +57,7 @@ function toast(msg, type = 'info') {
     container = document.createElement('div');
     container.id = 'toast-container';
     document.body.appendChild(container);
+  }
+  const el = document.createElement('div');
+  const icons = { success: '✓', error: '✕', info: 'ℹ' };
+  el.className = `toast ${type}`;
