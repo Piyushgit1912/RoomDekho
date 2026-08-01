@@ -48,3 +48,7 @@ const api = {
   isLoggedIn() { return !!this.token; },
   isOwner() { return this.user?.user_type === 'owner'; },
   isAdmin() { return this.user?.user_type === 'admin' || this.user?.is_staff; }
+};
+
+/* ===== Toast Notifications ===== */
+function toast(msg, type = 'info') {
