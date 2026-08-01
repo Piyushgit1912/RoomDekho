@@ -86,3 +86,7 @@ function initNavbar() {
     const dashboardLink = `<a href="dashboard.html" class="btn btn-ghost nav-btn-desktop">Dashboard</a>`;
     const addPropertyLink = isOwner ? `<a href="add-property.html" class="btn btn-primary nav-btn-desktop">+ List Property</a>` : `<a href="#" class="btn btn-outline nav-btn-desktop" onclick="event.preventDefault(); toast('Only Property Owners can add listings. Please login with an Owner account.', 'error')">+ List Property</a>`;
     
+    navActions.innerHTML = `
+      ${addPropertyLink}
+      ${dashboardLink}
+      <div class="user-menu" id="userMenu">
