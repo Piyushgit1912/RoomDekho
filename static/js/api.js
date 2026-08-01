@@ -81,3 +81,8 @@ function initNavbar() {
 
   // Auth state in navbar
   const navActions = document.querySelector('.nav-actions');
+  if (navActions && api.isLoggedIn()) {
+    const isOwner = api.isOwner();
+    const dashboardLink = `<a href="dashboard.html" class="btn btn-ghost nav-btn-desktop">Dashboard</a>`;
+    const addPropertyLink = isOwner ? `<a href="add-property.html" class="btn btn-primary nav-btn-desktop">+ List Property</a>` : `<a href="#" class="btn btn-outline nav-btn-desktop" onclick="event.preventDefault(); toast('Only Property Owners can add listings. Please login with an Owner account.', 'error')">+ List Property</a>`;
+    
