@@ -90,3 +90,7 @@ function initNavbar() {
       ${addPropertyLink}
       ${dashboardLink}
       <div class="user-menu" id="userMenu">
+        <div class="user-menu-trigger" onclick="toggleUserMenu(event)">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--brand-light);color:var(--brand);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem">
+            ${(api.user?.name || 'U')[0].toUpperCase()}
+          </div>
