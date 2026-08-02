@@ -126,3 +126,8 @@ window.toggleUserMenu = function(event) {
   if (userMenu) {
     userMenu.classList.toggle('open');
   }
+};
+
+async function handleLogout() {
+  try { await api.post('/logout/'); } catch(e) {}
+  api.clearAuth();
