@@ -131,3 +131,9 @@ window.toggleUserMenu = function(event) {
 async function handleLogout() {
   try { await api.post('/logout/'); } catch(e) {}
   api.clearAuth();
+  toast('Logged out successfully', 'success');
+  setTimeout(() => window.location.href = 'index.html', 800);
+}
+
+/* ===== Favorites ===== */
+async function toggleFavorite(propertyId, btn) {
