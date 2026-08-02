@@ -137,3 +137,8 @@ async function handleLogout() {
 
 /* ===== Favorites ===== */
 async function toggleFavorite(propertyId, btn) {
+  if (!api.isLoggedIn()) {
+    toast('Please login to save favorites', 'error');
+    return;
+  }
+  try {
