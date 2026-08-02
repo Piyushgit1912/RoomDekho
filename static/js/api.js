@@ -98,3 +98,9 @@ function initNavbar() {
           <span style="font-size:0.6rem;color:var(--mid);margin-left:2px">▼</span>
         </div>
         <div class="user-dropdown">
+          <div class="user-dropdown-info">
+            <div class="user-dropdown-name">${api.user?.name || 'User'}</div>
+            <div class="user-dropdown-role">${api.user?.user_type || 'Tenant'}</div>
+          </div>
+          <a href="dashboard.html" class="user-dropdown-item">👤 My Dashboard</a>
+          ${isOwner ? `<a href="add-property.html" class="user-dropdown-item">➕ Add Property</a>` : `<a href="#" class="user-dropdown-item" onclick="event.preventDefault(); toast('Only Property Owners can add listings.', 'error')">➕ Add Property</a>`}
