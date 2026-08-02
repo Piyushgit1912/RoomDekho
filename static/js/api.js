@@ -142,3 +142,9 @@ async function toggleFavorite(propertyId, btn) {
     return;
   }
   try {
+    const res = await api.post('/favorites/', { property_id: propertyId });
+    btn.classList.toggle('active', res.favorited);
+    btn.textContent = res.favorited ? '❤️' : '🤍';
+    toast(res.message, 'success');
+  } catch(e) {
+    toast('Failed to update favorites', 'error');
