@@ -120,3 +120,9 @@ function initNavbar() {
   }
 }
 
+window.toggleUserMenu = function(event) {
+  event.stopPropagation();
+  const userMenu = document.getElementById('userMenu');
+  if (userMenu) {
+    userMenu.classList.toggle('open');
+  }
