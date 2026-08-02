@@ -104,3 +104,8 @@ function initNavbar() {
           </div>
           <a href="dashboard.html" class="user-dropdown-item">👤 My Dashboard</a>
           ${isOwner ? `<a href="add-property.html" class="user-dropdown-item">➕ Add Property</a>` : `<a href="#" class="user-dropdown-item" onclick="event.preventDefault(); toast('Only Property Owners can add listings.', 'error')">➕ Add Property</a>`}
+          ${api.isAdmin() ? `<a href="superadmin.html" class="user-dropdown-item">🛡️ Superadmin Panel</a>` : ''}
+          <div class="user-dropdown-item logout" onclick="handleLogout()">🚪 Log Out</div>
+        </div>
+      </div>
+    `;
