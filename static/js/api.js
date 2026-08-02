@@ -109,3 +109,9 @@ function initNavbar() {
         </div>
       </div>
     `;
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      const userMenu = document.getElementById('userMenu');
+      if (userMenu && !userMenu.contains(e.target)) {
+        userMenu.classList.remove('open');
