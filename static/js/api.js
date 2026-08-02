@@ -115,3 +115,8 @@ function initNavbar() {
       const userMenu = document.getElementById('userMenu');
       if (userMenu && !userMenu.contains(e.target)) {
         userMenu.classList.remove('open');
+      }
+    });
+  }
+}
+
