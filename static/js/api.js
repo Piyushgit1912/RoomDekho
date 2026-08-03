@@ -188,3 +188,8 @@ function propertyCardHTML(p) {
         <div class="card-location">📍 ${p.location}, ${p.city}</div>
         <div class="card-tags">${tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
         <div class="card-footer">
+          <div class="card-rating"><span class="stars" style="font-size:0.85rem">${stars}</span> ${p.avg_rating || '—'} (${p.review_count || 0})</div>
+          <div class="card-owner">by ${p.owner_name || 'Owner'}</div>
+        </div>
+      </div>
+    </div>
