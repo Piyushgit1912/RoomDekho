@@ -158,3 +158,8 @@ function formatPrice(price) {
   if (n >= 1000) return `₹${(n/1000).toFixed(0)}K`;
   return `₹${n}`;
 }
+
+/* ===== Property Card HTML ===== */
+function propertyCardHTML(p) {
+  const img = p.primary_image || 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&q=80';
+  const stars = '★'.repeat(Math.round(p.avg_rating || 0)) + '☆'.repeat(5 - Math.round(p.avg_rating || 0));
