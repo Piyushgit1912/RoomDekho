@@ -183,3 +183,8 @@ function propertyCardHTML(p) {
         ${photoCount > 1 ? `<span class="card-photo-count">📷 ${photoCount} Photos</span>` : ''}
       </div>
       <div class="card-body">
+        <div class="card-price">${formatPrice(p.price)} <span>/ month</span></div>
+        <div class="card-title">${p.title}</div>
+        <div class="card-location">📍 ${p.location}, ${p.city}</div>
+        <div class="card-tags">${tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+        <div class="card-footer">
