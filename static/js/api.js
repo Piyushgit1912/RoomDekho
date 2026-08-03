@@ -168,3 +168,8 @@ function propertyCardHTML(p) {
     p.furnished_status ? p.furnished_status.charAt(0).toUpperCase() + p.furnished_status.slice(1) : null,
     p.gender_preference !== 'any' ? (p.gender_preference === 'male' ? 'Boys' : 'Girls') : null,
     p.wifi ? 'WiFi' : null,
+    p.ac ? 'AC' : null,
+    p.parking ? 'Parking' : null,
+  ].filter(Boolean).slice(0, 4);
+
+  const photoCount = p.image_count || 0;
