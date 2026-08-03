@@ -153,3 +153,8 @@ async function toggleFavorite(propertyId, btn) {
 
 /* ===== Currency Formatter ===== */
 function formatPrice(price) {
+  const n = Number(price);
+  if (n >= 100000) return `₹${(n/100000).toFixed(1)}L`;
+  if (n >= 1000) return `₹${(n/1000).toFixed(0)}K`;
+  return `₹${n}`;
+}
