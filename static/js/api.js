@@ -148,3 +148,8 @@ async function toggleFavorite(propertyId, btn) {
     toast(res.message, 'success');
   } catch(e) {
     toast('Failed to update favorites', 'error');
+  }
+}
+
+/* ===== Currency Formatter ===== */
+function formatPrice(price) {
