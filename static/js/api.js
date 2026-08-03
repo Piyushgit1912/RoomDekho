@@ -193,3 +193,7 @@ function propertyCardHTML(p) {
         </div>
       </div>
     </div>
+  `;
+}
+
+document.addEventListener('DOMContentLoaded', initNavbar);
