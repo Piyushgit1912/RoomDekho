@@ -178,3 +178,8 @@ function propertyCardHTML(p) {
     <div class="property-card fade-in" onclick="window.location.href='property-details.html?id=${p.id}'">
       <div class="card-image">
         <img src="${img}" alt="${p.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&q=80'">
+        <span class="card-badge">${typeLabel}</span>
+        <button class="card-fav" onclick="event.stopPropagation(); toggleFavorite(${p.id}, this)">🤍</button>
+        ${photoCount > 1 ? `<span class="card-photo-count">📷 ${photoCount} Photos</span>` : ''}
+      </div>
+      <div class="card-body">
