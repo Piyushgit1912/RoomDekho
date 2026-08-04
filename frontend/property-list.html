@@ -73,3 +73,18 @@
           <label class="filter-option"><input type="checkbox" name="room_type" value="studio"> Studio</label>
         </div>
       </div>
+
+      <div class="filter-group">
+        <span class="filter-label">Budget (₹/month)</span>
+        <div class="price-range">
+          <div class="range-inputs">
+            <input type="number" class="range-input" id="minPrice" placeholder="Min ₹" min="0">
+            <input type="number" class="range-input" id="maxPrice" placeholder="Max ₹" max="200000">
+          </div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap">
+            <button class="btn btn-ghost" style="font-size:0.75rem;padding:4px 10px" onclick="setPrice(0, 5000)">Under
+              5K</button>
+            <button class="btn btn-ghost" style="font-size:0.75rem;padding:4px 10px"
+              onclick="setPrice(5000, 10000)">5K-10K</button>
+            <button class="btn btn-ghost" style="font-size:0.75rem;padding:4px 10px"
+              onclick="setPrice(10000, 20000)">10K-20K</button>
