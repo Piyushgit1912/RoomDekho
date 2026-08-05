@@ -197,3 +197,14 @@
 
       // Furnished
       const furnished = document.querySelector('[name="furnished"]:checked')?.value;
+      if (furnished) params.set('furnished_status', furnished);
+
+      // Gender
+      const gender = document.querySelector('[name="gender"]:checked')?.value;
+      if (gender) params.set('gender_preference', gender);
+
+      // Amenities
+      document.querySelectorAll('[name="amenity"]:checked').forEach(el => {
+        params.set(el.value, 'true');
+      });
+
