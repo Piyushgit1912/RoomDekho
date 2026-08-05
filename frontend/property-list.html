@@ -173,3 +173,15 @@
   </footer>
 
   <script src="../static/js/api.js"></script>
+  <script>
+    let currentPage = 1;
+    const PAGE_SIZE = 12;
+
+    function getFilters() {
+      const params = new URLSearchParams();
+      const search = document.getElementById('searchInput').value.trim();
+      const city = document.getElementById('cityFilter').value;
+      const minPrice = document.getElementById('minPrice').value;
+      const maxPrice = document.getElementById('maxPrice').value;
+      const sort = document.getElementById('sortBy').value;
+
