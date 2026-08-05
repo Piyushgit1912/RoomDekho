@@ -185,3 +185,15 @@
       const maxPrice = document.getElementById('maxPrice').value;
       const sort = document.getElementById('sortBy').value;
 
+      if (search) params.set('search', search);
+      if (city) params.set('city', city);
+      if (minPrice) params.set('min_price', minPrice);
+      if (maxPrice) params.set('max_price', maxPrice);
+      if (sort) params.set('ordering', sort);
+
+      // Room types (multiple)
+      const roomTypes = [...document.querySelectorAll('[name="room_type"]:checked')].map(el => el.value);
+      if (roomTypes.length === 1) params.set('room_type', roomTypes[0]);
+
+      // Furnished
+      const furnished = document.querySelector('[name="furnished"]:checked')?.value;
