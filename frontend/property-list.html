@@ -208,3 +208,15 @@
         params.set(el.value, 'true');
       });
 
+      params.set('page', currentPage);
+      return params;
+    }
+
+    function setPrice(min, max) {
+      document.getElementById('minPrice').value = min || '';
+      document.getElementById('maxPrice').value = max || '';
+      applyFilters();
+    }
+
+    function clearFilters() {
+      document.getElementById('searchInput').value = '';
