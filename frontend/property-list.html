@@ -232,3 +232,15 @@
     let allLoadedProps = [];
 
     async function loadListings() {
+      const grid = document.getElementById('listingsGrid');
+      const countEl = document.getElementById('resultsCount');
+      grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem"><div class="spinner"></div></div>`;
+
+      try {
+        const params = getFilters();
+        const data = await api.get(`/properties/?${params}`);
+        const props = data.results || data;
+        const total = data.count || props.length;
+        allLoadedProps = props;
+
+        countEl.textContent = `${total} properties found`;
