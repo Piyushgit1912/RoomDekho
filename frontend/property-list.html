@@ -220,3 +220,15 @@
 
     function clearFilters() {
       document.getElementById('searchInput').value = '';
+      document.getElementById('cityFilter').value = '';
+      document.getElementById('minPrice').value = '';
+      document.getElementById('maxPrice').value = '';
+      document.querySelectorAll('[name="room_type"], [name="amenity"]').forEach(el => el.checked = false);
+      document.querySelectorAll('[name="furnished"], [name="gender"]').forEach(el => { if (el.value === '') el.checked = true; });
+      currentPage = 1;
+      loadListings();
+    }
+
+    let allLoadedProps = [];
+
+    async function loadListings() {
