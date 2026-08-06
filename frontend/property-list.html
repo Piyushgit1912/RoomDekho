@@ -267,3 +267,14 @@
       <div class="empty-title">Could not load listings</div>
       <p>Make sure the backend server is running on port 8000</p>
     </div>`;
+        countEl.textContent = 'Error loading';
+      }
+    }
+
+    function renderPagination(total, pageSize) {
+      if (!pageSize) return;
+      const totalPages = Math.ceil(total / pageSize);
+      const container = document.getElementById('pagination');
+      if (totalPages <= 1) { container.innerHTML = ''; return; }
+
+      let html = '';
