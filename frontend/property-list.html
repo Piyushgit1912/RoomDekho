@@ -278,3 +278,15 @@
       if (totalPages <= 1) { container.innerHTML = ''; return; }
 
       let html = '';
+      if (currentPage > 1) html += `<button class="page-btn" onclick="goPage(${currentPage - 1})">←</button>`;
+      for (let i = 1; i <= totalPages; i++) {
+        if (i === 1 || i === totalPages || Math.abs(i - currentPage) <= 2) {
+          html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goPage(${i})">${i}</button>`;
+        } else if (Math.abs(i - currentPage) === 3) {
+          html += `<span style="padding:0 4px;color:var(--mid)">…</span>`;
+        }
+      }
+      if (currentPage < totalPages) html += `<button class="page-btn" onclick="goPage(${currentPage + 1})">→</button>`;
+      container.innerHTML = html;
+    }
+
