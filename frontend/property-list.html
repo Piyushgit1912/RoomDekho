@@ -302,3 +302,14 @@
     }
 
     // Load from URL params
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('search')) document.getElementById('searchInput').value = urlParams.get('search');
+    if (urlParams.get('city')) document.getElementById('cityFilter').value = urlParams.get('city');
+    if (urlParams.get('room_type')) {
+      const cb = document.querySelector(`[name="room_type"][value="${urlParams.get('room_type')}"]`);
+      if (cb) cb.checked = true;
+    }
+
+    loadListings();
+
+    // Add filter change listeners
