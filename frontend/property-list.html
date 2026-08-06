@@ -290,3 +290,15 @@
       container.innerHTML = html;
     }
 
+    function goPage(page) {
+      currentPage = page;
+      loadListings();
+      window.scrollTo({ top: 72, behavior: 'smooth' });
+    }
+
+    function applyFilters() {
+      currentPage = 1;
+      loadListings();
+    }
+
+    // Load from URL params
