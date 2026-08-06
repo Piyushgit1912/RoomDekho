@@ -244,3 +244,14 @@
         allLoadedProps = props;
 
         countEl.textContent = `${total} properties found`;
+        document.getElementById('resultsTitle').textContent = params.get('city') ? `Rooms in ${params.get('city')}` : 'All Listings';
+
+        if (!props || props.length === 0) {
+          grid.innerHTML = `<div style="grid-column:1/-1" class="empty-state">
+        <div class="empty-icon">🏠</div>
+        <div class="empty-title">No properties found</div>
+        <p>Try adjusting your filters or search query</p>
+      </div>`;
+          clearMapMarkers();
+          return;
+        }
