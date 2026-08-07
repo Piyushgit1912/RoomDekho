@@ -366,3 +366,13 @@
           { featureType: 'transit', stylers: [{ visibility: 'off' }] }
         ]
       });
+      mapInfoWindow = new google.maps.InfoWindow();
+    }
+
+    function clearMapMarkers() {
+      mapMarkers.forEach(m => m.setMap(null));
+      mapMarkers = [];
+    }
+
+    function updateMapMarkers(props) {
+      if (!listMap || currentView !== 'map') return;
