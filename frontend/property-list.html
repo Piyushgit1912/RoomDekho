@@ -334,3 +334,14 @@
       if (view === 'map') {
         grid.style.display = 'none';
         pagination.style.display = 'none';
+        mapContainer.style.display = 'block';
+        listBtn.classList.remove('active');
+        mapBtn.classList.add('active');
+        initListMap();
+        updateMapMarkers(allLoadedProps);
+      } else {
+        grid.style.display = '';
+        pagination.style.display = '';
+        mapContainer.style.display = 'none';
+        listBtn.classList.add('active');
+        mapBtn.classList.remove('active');
