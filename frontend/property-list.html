@@ -313,3 +313,14 @@
     loadListings();
 
     // Add filter change listeners
+    document.querySelectorAll('[name="room_type"], [name="amenity"], [name="furnished"], [name="gender"]').forEach(el => {
+      el.addEventListener('change', applyFilters);
+    });
+
+    /* ===== Map View Toggle ===== */
+    let listMap = null;
+    let mapMarkers = [];
+    let mapInfoWindow = null;
+    let currentView = 'list';
+
+    function switchView(view) {
