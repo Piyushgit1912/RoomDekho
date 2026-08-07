@@ -408,3 +408,13 @@
         bounds.extend(pos);
         hasMarkers = true;
       });
+
+      if (hasMarkers) {
+        listMap.fitBounds(bounds);
+        if (listMap.getZoom() > 15) listMap.setZoom(15);
+      }
+    }
+  </script>
+</body>
+
+</html>
