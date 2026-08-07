@@ -376,3 +376,14 @@
 
     function updateMapMarkers(props) {
       if (!listMap || currentView !== 'map') return;
+      clearMapMarkers();
+
+      const bounds = new google.maps.LatLngBounds();
+      let hasMarkers = false;
+
+      props.forEach(p => {
+        if (!p.latitude || !p.longitude) return;
+        const pos = { lat: parseFloat(p.latitude), lng: parseFloat(p.longitude) };
+        const marker = new google.maps.Marker({
+          position: pos,
+          map: listMap,
