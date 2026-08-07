@@ -387,3 +387,13 @@
         const marker = new google.maps.Marker({
           position: pos,
           map: listMap,
+          title: p.title,
+          animation: google.maps.Animation.DROP
+        });
+
+        marker.addListener('click', () => {
+          const content = `
+        <div class="map-info-window">
+          <h4>${p.title}</h4>
+          <div class="map-info-price">${formatPrice(p.price)}<span style="font-size:0.75rem;color:var(--mid);font-weight:400"> / month</span></div>
+          <div class="map-info-location">📍 ${p.location}, ${p.city}</div>
