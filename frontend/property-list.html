@@ -397,3 +397,14 @@
           <h4>${p.title}</h4>
           <div class="map-info-price">${formatPrice(p.price)}<span style="font-size:0.75rem;color:var(--mid);font-weight:400"> / month</span></div>
           <div class="map-info-location">📍 ${p.location}, ${p.city}</div>
+          <a href="property-details.html?id=${p.id}">View Details →</a>
+        </div>
+      `;
+          mapInfoWindow.setContent(content);
+          mapInfoWindow.open(listMap, marker);
+        });
+
+        mapMarkers.push(marker);
+        bounds.extend(pos);
+        hasMarkers = true;
+      });
