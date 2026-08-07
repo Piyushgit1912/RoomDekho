@@ -324,3 +324,13 @@
     let currentView = 'list';
 
     function switchView(view) {
+      currentView = view;
+      const grid = document.getElementById('listingsGrid');
+      const mapContainer = document.getElementById('mapViewContainer');
+      const pagination = document.getElementById('pagination');
+      const listBtn = document.getElementById('listViewBtn');
+      const mapBtn = document.getElementById('mapViewBtn');
+
+      if (view === 'map') {
+        grid.style.display = 'none';
+        pagination.style.display = 'none';
