@@ -345,3 +345,13 @@
         mapContainer.style.display = 'none';
         listBtn.classList.add('active');
         mapBtn.classList.remove('active');
+      }
+    }
+
+    function initListMap() {
+      if (listMap) return;
+      if (typeof google === 'undefined') {
+        setTimeout(initListMap, 500);
+        return;
+      }
+      const defaultCenter = { lat: 20.5937, lng: 78.9629 };
