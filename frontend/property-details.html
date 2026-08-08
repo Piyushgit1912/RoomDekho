@@ -89,3 +89,16 @@
     if (!propertyId) window.location.href = 'property-list.html';
 
     async function loadProperty() {
+      try {
+        property = await api.get(`/properties/${propertyId}/`);
+        renderProperty(property);
+        loadReviews();
+        // Init map after render if coordinates exist
+        if (property.latitude && property.longitude) {
+          setTimeout(() => initDetailMap(property), 300);
+        }
+      } catch (e) {
+        document.getElementById('detailContent').innerHTML = `
+      <div class="empty-state"><div class="empty-icon">⚠️</div>
+        <div class="empty-title">Property not found</div>
+        <a href="property-list.html" class="btn btn-primary mt-2">Browse listings</a>
