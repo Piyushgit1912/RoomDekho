@@ -76,3 +76,16 @@
     <div class="lightbox-counter" id="lightboxCounter"></div>
   </div>
 
+  <footer>
+    <div class="footer-bottom">© 2026 RoomZey · <a href="index.html" style="color:var(--brand)">Home</a></div>
+  </footer>
+
+  <script src="../static/js/api.js"></script>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const propertyId = urlParams.get('id');
+    let property = null;
+
+    if (!propertyId) window.location.href = 'property-list.html';
+
+    async function loadProperty() {
