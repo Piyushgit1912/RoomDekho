@@ -63,3 +63,16 @@
         <input type="date" class="form-input" id="inquiryDate" min="">
       </div>
       <div id="inquiryAlert"></div>
+      <button class="btn btn-primary btn-full" onclick="sendInquiry()">Send Inquiry</button>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <button class="lightbox-prev" onclick="lightboxNav(-1)">‹</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="Property photo">
+    <button class="lightbox-next" onclick="lightboxNav(1)">›</button>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
+
