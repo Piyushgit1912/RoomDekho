@@ -115,3 +115,15 @@
       const sideImgs = imgs.slice(1, 5);
       // Build gallery image URLs for lightbox
       window._galleryImages = imgs.map(i => i.image_url || fallback);
+      if (!window._galleryImages.length) window._galleryImages = [fallback];
+
+      const isOwnListing = api.isLoggedIn() && api.user?.id === p.owner;
+
+      const stars = n => '★'.repeat(n) + '☆'.repeat(5 - n);
+      const amenities = [
+        { key: 'wifi', icon: '📶', label: 'WiFi' },
+        { key: 'ac', icon: '❄️', label: 'AC' },
+        { key: 'parking', icon: '🚗', label: 'Parking' },
+        { key: 'food', icon: '🍽️', label: 'Meals' },
+        { key: 'gym', icon: '💪', label: 'Gym' },
+        { key: 'security', icon: '🔒', label: 'Security' },
