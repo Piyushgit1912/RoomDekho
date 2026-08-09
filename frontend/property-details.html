@@ -220,3 +220,15 @@
               <a href="https://www.google.com/maps/dir/?api=1&destination=${p.latitude},${p.longitude}" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:0.85rem">
                 🛣 Get Directions
               </a>
+            </div>
+          </div>
+          ` : `
+          <div class="no-location-msg">
+            <span style="font-size:1.2rem">📍</span>
+            <span>Exact map location not available for this property. Contact the owner for directions.</span>
+          </div>
+          `}
+          
+          <!-- Reviews -->
+          <div style="background:white; border-radius:var(--radius); padding:1.5rem; border:1px solid var(--border); margin-bottom:1.5rem">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem">
