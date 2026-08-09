@@ -139,3 +139,14 @@
         <div class="gallery-main" onclick="openLightbox(0)">
           <img src="${mainImg}" alt="${p.title}" onerror="this.src='${fallback}'" style="object-fit:cover">
         </div>
+        <div class="gallery-side">
+          ${sideImgs.length > 0 ? sideImgs.map((img, i) => `<img src="${img.image_url}" alt="" onclick="openLightbox(${i + 1})" onerror="this.src='${fallback}'" style="object-fit:cover">`).join('') : `<img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=400&q=80" alt=""><img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400&q=80" alt="">`}
+          ${sideImgs.length === 1 ? `<img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400&q=80" alt="">` : ''}
+        </div>
+        ${imgs.length > 3 ? `<button class="gallery-show-all" onclick="openLightbox(0)">📷 Show All ${imgs.length} Photos</button>` : ''}
+      </div>
+      ${videos.length > 0 ? `
+      <div style="background:white; border-radius:var(--radius); padding:1.5rem; border:1px solid var(--border); margin-bottom:1.5rem">
+       <h3 style="margin-bottom:1rem">🎥 Property Video</h3>
+      
+       <video
