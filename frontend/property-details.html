@@ -209,3 +209,14 @@
 
           <!-- Map Section -->
           ${p.latitude && p.longitude ? `
+          <div class="detail-map-section">
+            <h3 style="margin-bottom:0.25rem">🗺️ Location on Map</h3>
+            <p style="color:var(--mid); font-size:0.85rem">${p.location}, ${p.city}</p>
+            <div class="map-container" id="detailMap"></div>
+            <div class="detail-map-actions">
+              <a href="https://www.google.com/maps?q=${p.latitude},${p.longitude}" target="_blank" rel="noopener" class="btn btn-primary" style="font-size:0.85rem">
+                📍 Open in Google Maps
+              </a>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=${p.latitude},${p.longitude}" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:0.85rem">
+                🛣 Get Directions
+              </a>
