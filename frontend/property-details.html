@@ -197,3 +197,15 @@
           <div style="background:white; border-radius:var(--radius); padding:1.5rem; border:1px solid var(--border); margin-bottom:1.5rem">
             <h3 style="margin-bottom:1rem">Amenities</h3>
             <div class="amenity-grid">
+              ${amenities.map(a => `
+                <div class="amenity-item ${p[a.key] ? 'active' : ''}">
+                  <span class="amenity-icon">${a.icon}</span>
+                  <span>${a.label}</span>
+                  ${p[a.key] ? '' : '<span style="font-size:0.7rem;opacity:0.5">Not available</span>'}
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Map Section -->
+          ${p.latitude && p.longitude ? `
