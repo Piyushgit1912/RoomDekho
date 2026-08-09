@@ -185,3 +185,15 @@
                 <span style="color:var(--mid); font-size:0.85rem">(${p.review_count || 0} reviews)</span>
               </div>
             </div>
+          </div>
+          
+          <!-- Description -->
+          <div style="background:white; border-radius:var(--radius); padding:1.5rem; border:1px solid var(--border); margin-bottom:1.5rem">
+            <h3 style="margin-bottom:1rem">About This Property</h3>
+            <p style="color:var(--mid); line-height:1.8">${p.description}</p>
+          </div>
+
+          <!-- Amenities -->
+          <div style="background:white; border-radius:var(--radius); padding:1.5rem; border:1px solid var(--border); margin-bottom:1.5rem">
+            <h3 style="margin-bottom:1rem">Amenities</h3>
+            <div class="amenity-grid">
