@@ -174,3 +174,14 @@
               <div style="display:flex; align-items:center; gap:6px; color:var(--mid)">
                 <span>📍</span> <span>${p.location}, ${p.city}${p.state ? ', ' + p.state : ''}</span>
               </div>
+            </div>
+            <div>
+              <div style="font-family:'Syne',sans-serif; font-size:2rem; font-weight:800; color:var(--brand)">
+                ${formatPrice(p.price)} <span style="font-size:0.9rem; color:var(--mid); font-family:'DM Sans',sans-serif; font-weight:400">/ month</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:6px; margin-top:4px">
+                <span style="color:#F59E0B; font-size:1rem">${stars(Math.round(p.avg_rating || 0))}</span>
+                <span style="font-weight:600">${p.avg_rating || '—'}</span>
+                <span style="color:var(--mid); font-size:0.85rem">(${p.review_count || 0} reviews)</span>
+              </div>
+            </div>
