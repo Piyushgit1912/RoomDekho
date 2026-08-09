@@ -127,3 +127,15 @@
         { key: 'food', icon: '🍽️', label: 'Meals' },
         { key: 'gym', icon: '💪', label: 'Gym' },
         { key: 'security', icon: '🔒', label: 'Security' },
+        { key: 'laundry', icon: '👕', label: 'Laundry' },
+      ];
+
+      const typeMap = { single: 'Single Room', double: 'Double Sharing', triple: 'Triple Sharing', flat_1bhk: '1 BHK Flat', flat_2bhk: '2 BHK Flat', flat_3bhk: '3 BHK Flat', pg: 'PG', hostel: 'Hostel', studio: 'Studio' };
+      const roomType = p.room_type === 'other' ? (p.custom_room_type || 'Other') : (typeMap[p.room_type] || p.room_type);
+      document.getElementById('detailContent').innerHTML = `
+    <div style="max-width:1100px; margin:0 auto; padding:0 2rem 4rem">
+      <!-- Gallery -->
+      <div class="property-gallery" style="margin-bottom:2rem">
+        <div class="gallery-main" onclick="openLightbox(0)">
+          <img src="${mainImg}" alt="${p.title}" onerror="this.src='${fallback}'" style="object-fit:cover">
+        </div>
