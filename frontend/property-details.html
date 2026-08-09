@@ -162,3 +162,15 @@
       ` : ''}
       <div class="detail-layout" style="padding:0">
         <!-- Main Content -->
+        <div>
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:1rem; margin-bottom:1.5rem">
+            <div>
+              <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:0.75rem">
+                <span style="background:var(--brand);color:white;padding:4px 12px;border-radius:50px;font-size:0.8rem;font-weight:600">${typeMap[p.room_type] || p.room_type}</span>
+                <span style="background:var(--light);color:var(--mid);padding:4px 12px;border-radius:50px;font-size:0.8rem;border:1px solid var(--border)">${p.furnished_status}</span>
+                ${p.gender_preference !== 'any' ? `<span style="background:var(--light);color:var(--mid);padding:4px 12px;border-radius:50px;font-size:0.8rem;border:1px solid var(--border)">${p.gender_preference === 'male' ? 'Boys Only' : 'Girls Only'}</span>` : ''}
+              </div>
+              <h1 style="font-size:1.75rem; margin-bottom:0.5rem">${p.title}</h1>
+              <div style="display:flex; align-items:center; gap:6px; color:var(--mid)">
+                <span>📍</span> <span>${p.location}, ${p.city}${p.state ? ', ' + p.state : ''}</span>
+              </div>
