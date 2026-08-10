@@ -334,3 +334,18 @@
       try {
         const reviews = await api.get(`/properties/${propertyId}/reviews/`);
         const stars = n => '<span style="color:#F59E0B">' + '★'.repeat(n) + '</span>' + '☆'.repeat(5 - n);
+        const container = document.getElementById('reviewsList');
+        if (!reviews.length) {
+          container.innerHTML = `<p style="color:var(--mid); font-size:0.9rem">No reviews yet. Be the first to review!</p>`;
+          return;
+        }
+        container.innerHTML = reviews.map(r => `
+      <div class="review-card">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <div class="reviewer-avatar">${(r.user_name || 'U')[0].toUpperCase()}</div>
+            <div>
+              <div style="font-weight:600; font-size:0.9rem">${r.user_name || 'User'}</div>
+              <div style="font-size:0.75rem; color:var(--mid)">${new Date(r.created_at).toLocaleDateString('en-IN')}</div>
+            </div>
+          </div>
