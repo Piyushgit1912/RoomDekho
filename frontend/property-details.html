@@ -247,3 +247,17 @@
               <button class="btn btn-primary" onclick="submitReview()">Submit Review</button>
             </div>
 
+            <div id="reviewsList"><div class="spinner" style="width:30px;height:30px;border-width:2px"></div></div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div>
+          <div class="contact-card">
+            <div style="display:flex; align-items:center; gap:12px; margin-bottom:1.25rem; padding-bottom:1.25rem; border-bottom:1px solid var(--border)">
+              <div style="width:48px;height:48px;border-radius:50%;background:var(--brand-light);color:var(--brand);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem">
+                ${(p.owner_name || 'O')[0].toUpperCase()}
+              </div>
+              <div>
+                <div style="font-weight:600">${p.owner_name || 'Property Owner'}</div>
+                <div style="font-size:0.8rem; color:var(--mid)">Property Owner</div>
