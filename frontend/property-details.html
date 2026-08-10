@@ -320,3 +320,17 @@
       const comment = document.getElementById('reviewComment').value.trim();
       if (!comment) { toast('Please write a comment', 'error'); return; }
 
+      try {
+        await api.post(`/properties/${propertyId}/reviews/`, { rating: selectedRating, comment });
+        toast('Review submitted!', 'success');
+        document.getElementById('reviewForm').style.display = 'none';
+        loadReviews();
+      } catch (e) {
+        toast(e.detail || 'Could not submit review', 'error');
+      }
+    }
+
+    async function loadReviews() {
+      try {
+        const reviews = await api.get(`/properties/${propertyId}/reviews/`);
+        const stars = n => '<span style="color:#F59E0B">' + '★'.repeat(n) + '</span>' + '☆'.repeat(5 - n);
