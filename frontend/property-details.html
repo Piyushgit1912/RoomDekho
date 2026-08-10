@@ -261,3 +261,18 @@
               <div>
                 <div style="font-weight:600">${p.owner_name || 'Property Owner'}</div>
                 <div style="font-size:0.8rem; color:var(--mid)">Property Owner</div>
+              </div>
+            </div>
+
+            ${api.isLoggedIn() ? `
+              <div style="display:flex; flex-direction:column; gap:0.75rem; margin-bottom:1.25rem">
+                ${p.contact_phone || p.owner_phone ? `<a href="tel:${p.contact_phone || p.owner_phone}" class="btn btn-outline" style="justify-content:center">📞 ${p.contact_phone || p.owner_phone}</a>` : ''}
+                ${p.contact_email || p.owner_email ? `<a href="mailto:${p.contact_email || p.owner_email}" class="btn btn-ghost" style="justify-content:center">✉️ Send Email</a>` : ''}
+              </div>
+            ` : `
+              <div class="alert alert-info" style="margin-bottom:1rem; font-size:0.85rem">
+                <a href="login.html" style="color:inherit; font-weight:600">Login</a> to view contact details
+              </div>
+            `}
+
+            ${isOwnListing ? `
