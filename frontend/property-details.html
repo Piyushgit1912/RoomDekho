@@ -305,3 +305,18 @@
     function setRating(n) {
       selectedRating = n;
       document.querySelectorAll('#ratingStars button').forEach((btn, i) => {
+        btn.textContent = i < n ? '★' : '☆';
+        btn.style.color = i < n ? '#F59E0B' : 'var(--mid)';
+      });
+    }
+
+    function showReviewForm() {
+      const form = document.getElementById('reviewForm');
+      form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    }
+
+    async function submitReview() {
+      if (!selectedRating) { toast('Please select a rating', 'error'); return; }
+      const comment = document.getElementById('reviewComment').value.trim();
+      if (!comment) { toast('Please write a comment', 'error'); return; }
+
