@@ -276,3 +276,17 @@
             `}
 
             ${isOwnListing ? `
+              <div class="own-listing-badge">
+                <span>🏠</span> This is your listing
+              </div>
+            ` : `
+              <button class="btn btn-primary btn-full" onclick="openInquiry()">📩 Send Inquiry</button>
+            `}
+            <button class="btn btn-ghost btn-full mt-1" onclick="toggleFavorite(${p.id}, this)">🤍 Save to Favorites</button>
+
+            <div style="margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid var(--border)">
+              <div style="font-size:0.8rem; color:var(--mid); margin-bottom:0.5rem">Details</div>
+              <div style="display:flex; flex-direction:column; gap:8px; font-size:0.9rem">
+                <div style="display:flex; justify-content:space-between"><span style="color:var(--mid)">Type</span><span style="font-weight:500">${typeMap[p.room_type] || p.room_type}</span></div>
+                <div style="display:flex; justify-content:space-between"><span style="color:var(--mid)">Furnishing</span><span style="font-weight:500">${p.furnished_status}</span></div>
+                <div style="display:flex; justify-content:space-between"><span style="color:var(--mid)">For</span><span style="font-weight:500">${p.gender_preference === 'any' ? 'Co-ed' : p.gender_preference === 'male' ? 'Boys' : 'Girls'}</span></div>
