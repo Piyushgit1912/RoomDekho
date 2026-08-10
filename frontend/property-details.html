@@ -232,3 +232,18 @@
           <!-- Reviews -->
           <div style="background:white; border-radius:var(--radius); padding:1.5rem; border:1px solid var(--border); margin-bottom:1.5rem">
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem">
+              <h3>Reviews & Ratings</h3>
+              ${api.isLoggedIn() ? `<button class="btn btn-outline" onclick="showReviewForm()" style="font-size:0.85rem">Write Review</button>` : `<a href="login.html" class="btn btn-ghost" style="font-size:0.85rem">Login to Review</a>`}
+            </div>
+            
+            <!-- Review form (hidden) -->
+            <div id="reviewForm" style="display:none; background:var(--light); border-radius:var(--radius-sm); padding:1.25rem; margin-bottom:1.5rem; border:1px solid var(--border)">
+              <h4 style="margin-bottom:1rem">Your Review</h4>
+              <div style="display:flex; gap:8px; margin-bottom:1rem" id="ratingStars">
+                ${[1, 2, 3, 4, 5].map(n => `<button onclick="setRating(${n})" data-val="${n}" style="font-size:1.5rem; background:none; border:none; cursor:pointer; transition:transform 0.1s">☆</button>`).join('')}
+              </div>
+              <textarea class="form-textarea" id="reviewComment" placeholder="Share your experience..." style="margin-bottom:0.75rem"></textarea>
+              <div id="reviewAlert"></div>
+              <button class="btn btn-primary" onclick="submitReview()">Submit Review</button>
+            </div>
+
