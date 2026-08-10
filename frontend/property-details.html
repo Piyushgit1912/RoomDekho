@@ -290,3 +290,18 @@
                 <div style="display:flex; justify-content:space-between"><span style="color:var(--mid)">Type</span><span style="font-weight:500">${typeMap[p.room_type] || p.room_type}</span></div>
                 <div style="display:flex; justify-content:space-between"><span style="color:var(--mid)">Furnishing</span><span style="font-weight:500">${p.furnished_status}</span></div>
                 <div style="display:flex; justify-content:space-between"><span style="color:var(--mid)">For</span><span style="font-weight:500">${p.gender_preference === 'any' ? 'Co-ed' : p.gender_preference === 'male' ? 'Boys' : 'Girls'}</span></div>
+                <div style="display:flex; justify-content:space-between"><span style="color:var(--mid)">City</span><span style="font-weight:500">${p.city}</span></div>
+                <div style="display:flex; justify-content:space-between"><span style="color:var(--mid)">Listed</span><span style="font-weight:500">${new Date(p.created_at).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+    }
+
+    let selectedRating = 0;
+    function setRating(n) {
+      selectedRating = n;
+      document.querySelectorAll('#ratingStars button').forEach((btn, i) => {
