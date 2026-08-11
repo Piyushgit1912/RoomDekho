@@ -422,3 +422,17 @@
 
     // ESC to close
     document.addEventListener('keydown', (e) => {
+      const overlay = document.getElementById('lightbox');
+      if (!overlay.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lightboxNav(-1);
+      if (e.key === 'ArrowRight') lightboxNav(1);
+    });
+
+    // Click outside image to close
+    document.getElementById('lightbox').addEventListener('click', (e) => {
+      if (e.target.id === 'lightbox') closeLightbox();
+    });
+
+    // Expose functions globally
+    window.openLightbox = openLightbox;
