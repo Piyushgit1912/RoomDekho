@@ -407,3 +407,18 @@
       document.body.style.overflow = 'hidden';
     }
 
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function lightboxNav(dir) {
+      const images = window._galleryImages || [];
+      if (!images.length) return;
+      _lightboxIdx = (_lightboxIdx + dir + images.length) % images.length;
+      document.getElementById('lightboxImg').src = images[_lightboxIdx];
+      document.getElementById('lightboxCounter').textContent = `${_lightboxIdx + 1} / ${images.length}`;
+    }
+
+    // ESC to close
+    document.addEventListener('keydown', (e) => {
