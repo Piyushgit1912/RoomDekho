@@ -436,3 +436,18 @@
 
     // Expose functions globally
     window.openLightbox = openLightbox;
+    window.closeLightbox = closeLightbox;
+    window.lightboxNav = lightboxNav;
+
+    function initDetailMap(p) {
+      const mapEl = document.getElementById('detailMap');
+      if (!mapEl || typeof google === 'undefined') return;
+      const pos = { lat: parseFloat(p.latitude), lng: parseFloat(p.longitude) };
+      const map = new google.maps.Map(mapEl, {
+        center: pos,
+        zoom: 15,
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: true,
+        styles: [
+          { featureType: 'poi', stylers: [{ visibility: 'simplified' }] },
