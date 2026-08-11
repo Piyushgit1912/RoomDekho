@@ -378,3 +378,18 @@
       const alertEl = document.getElementById('inquiryAlert');
 
       if (!msg || !phone) {
+        alertEl.innerHTML = `<div class="alert alert-error">Please fill in all required fields.</div>`;
+        return;
+      }
+
+      try {
+        await api.post('/inquiries/', { property: propertyId, message: msg, contact_number: phone, visit_date: date || null });
+        closeModal();
+        toast('Inquiry sent! The owner will contact you soon.', 'success');
+      } catch (e) {
+        alertEl.innerHTML = `<div class="alert alert-error">${e.detail || 'Failed to send inquiry.'}</div>`;
+      }
+    }
+
+    loadProperty();
+
