@@ -393,3 +393,17 @@
 
     loadProperty();
 
+    /* ===== Lightbox ===== */
+    let _lightboxIdx = 0;
+
+    function openLightbox(idx) {
+      const images = window._galleryImages || [];
+      if (!images.length) return;
+      _lightboxIdx = idx;
+      const overlay = document.getElementById('lightbox');
+      document.getElementById('lightboxImg').src = images[idx];
+      document.getElementById('lightboxCounter').textContent = `${idx + 1} / ${images.length}`;
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
