@@ -349,3 +349,17 @@
               <div style="font-size:0.75rem; color:var(--mid)">${new Date(r.created_at).toLocaleDateString('en-IN')}</div>
             </div>
           </div>
+          <div>${stars(r.rating)}</div>
+        </div>
+        <p style="font-size:0.9rem; color:var(--mid)">${r.comment}</p>
+      </div>
+    `).join('');
+      } catch (e) {
+        document.getElementById('reviewsList').innerHTML = '';
+      }
+    }
+
+    function openInquiry() {
+      if (!api.isLoggedIn()) {
+        toast('Please login to send inquiries', 'error');
+        setTimeout(() => window.location.href = 'login.html', 1200);
