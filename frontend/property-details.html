@@ -363,3 +363,18 @@
       if (!api.isLoggedIn()) {
         toast('Please login to send inquiries', 'error');
         setTimeout(() => window.location.href = 'login.html', 1200);
+        return;
+      }
+      document.getElementById('inquiryDate').min = new Date().toISOString().split('T')[0];
+      document.getElementById('inquiryModal').classList.add('open');
+    }
+
+    function closeModal() { document.getElementById('inquiryModal').classList.remove('open'); }
+
+    async function sendInquiry() {
+      const msg = document.getElementById('inquiryMsg').value.trim();
+      const phone = document.getElementById('inquiryPhone').value.trim();
+      const date = document.getElementById('inquiryDate').value;
+      const alertEl = document.getElementById('inquiryAlert');
+
+      if (!msg || !phone) {
