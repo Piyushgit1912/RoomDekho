@@ -77,3 +77,23 @@
               <option value="hostel">Hostel</option>
               <option value="studio">Studio Apartment</option>
               <option value="other">Custom</option>
+
+            </select>
+            <div class="form-group" id="custom-room-group" style="display:none;">
+              <label class="form-label">Custom Room Type</label>
+              <input type="text" id="custom_room_type" class="form-input" placeholder="e.g. Villa, Duplex, Farm House">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Monthly Rent (₹) *</label>
+            <input type="number" class="form-input" id="price" placeholder="e.g. 8000">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Description *</label>
+          <textarea class="form-textarea" id="description"
+            placeholder="Describe your property — mention nearby landmarks, transport, house rules, etc."
+            rows="5"></textarea>
+          <div style="text-align:right; font-size:0.75rem; color:var(--mid)" id="descCount">0 / 500 characters</div>
+        </div>
