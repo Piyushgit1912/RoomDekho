@@ -117,3 +117,22 @@
           </div>
         </div>
 
+        <div style="display:flex; justify-content:flex-end">
+          <button class="btn btn-primary" onclick="nextStep(2)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Location & Amenities -->
+      <div id="formStep2" style="display:none">
+        <h3 style="margin-bottom:1.5rem; padding-bottom:0.75rem; border-bottom:1px solid var(--border)">📍 Location &
+          Amenities</h3>
+
+        <div class="form-group">
+          <label class="form-label">Full Address / Locality *</label>
+          <input type="text" class="form-input" id="location" placeholder="e.g. Koramangala 5th Block">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">City *</label>
+            <input type="text" list="cities" class="form-input" id="city">
