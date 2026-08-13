@@ -186,3 +186,16 @@
           <div class="map-container" id="addPropertyMap"></div>
           <div class="map-coords-display" id="coordsDisplay" style="display:none">
             <span id="latDisplay">Lat: —</span>
+            <span id="lngDisplay">Lng: —</span>
+          </div>
+          <input type="hidden" id="latitude" value="">
+          <input type="hidden" id="longitude" value="">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" style="margin-bottom:0.75rem">Available Amenities</label>
+          <div class="amenities-grid">
+            <div class="amenity-toggle"><input type="checkbox" id="wifi" name="amenity"><label
+                class="amenity-toggle-label" for="wifi"><span style="font-size:1.4rem">📶</span>WiFi</label></div>
+            <div class="amenity-toggle"><input type="checkbox" id="ac" name="amenity"><label
+                class="amenity-toggle-label" for="ac"><span style="font-size:1.4rem">❄️</span>AC</label></div>
