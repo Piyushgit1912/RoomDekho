@@ -174,3 +174,15 @@
           <label class="form-label" style="margin-bottom:0.75rem">📍 Pin Location on Map <span
               style="font-weight:400; color:var(--mid)">(optional but recommended)</span></label>
           <div class="map-search-wrapper" style="margin-bottom:0.75rem">
+            <span class="map-search-icon">🔍</span>
+            <input type="text" class="form-input" id="mapSearchBox"
+              placeholder="Search college, area, landmark, city...">
+          </div>
+          <div style="display:flex; gap:0.75rem; margin-bottom:0.75rem; flex-wrap:wrap">
+            <button type="button" class="location-btn" id="useLocationBtn" onclick="useCurrentLocation()">
+              📍 Use My Current Location
+            </button>
+          </div>
+          <div class="map-container" id="addPropertyMap"></div>
+          <div class="map-coords-display" id="coordsDisplay" style="display:none">
+            <span id="latDisplay">Lat: —</span>
