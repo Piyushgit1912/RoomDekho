@@ -224,3 +224,15 @@
         <h3 style="margin-bottom:1.5rem; padding-bottom:0.75rem; border-bottom:1px solid var(--border)">📸 Photos &
           Contact</h3>
 
+        <div class="form-group">
+          <label class="form-label">Property Photos (up to 10)</label>
+          <div class="image-upload-zone" id="uploadZone" onclick="document.getElementById('imageInput').click()">
+            <div style="font-size:2.5rem; margin-bottom:0.5rem">📷</div>
+            <div style="font-weight:600; margin-bottom:0.25rem">Click to upload photos</div>
+            <div style="color:var(--mid); font-size:0.85rem">JPG, PNG, WebP • Max 5MB each</div>
+          </div>
+          <input type="file" id="imageInput" multiple accept="image/*" style="display:none"
+            onchange="handleImages(this)">
+          <div class="image-preview-grid" id="previewGrid"></div>
+        </div>
+        <div class="form-group">
