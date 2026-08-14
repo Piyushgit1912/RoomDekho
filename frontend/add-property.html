@@ -384,3 +384,17 @@
         if (!document.getElementById('price').value) { toast('Please enter rent amount', 'error'); return; }
         if (!document.getElementById('description').value.trim()) { toast('Please enter a description', 'error'); return; }
       }
+      if (step === 3) {
+        if (!document.getElementById('location').value.trim()) { toast('Please enter address', 'error'); return; }
+        if (!document.getElementById('city').value) { toast('Please select city', 'error'); return; }
+      }
+
+      [1, 2, 3].forEach(s => {
+        document.getElementById(`formStep${s}`).style.display = 'none';
+        document.getElementById(`step${s}`).classList.remove('active');
+      });
+      document.getElementById(`formStep${step}`).style.display = 'block';
+      document.getElementById(`step${step}`).classList.add('active');
+      for (let i = 1; i < step; i++) { document.getElementById(`step${i}`).classList.add('done'); }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
