@@ -288,3 +288,17 @@
   </footer>
 
   <script src="../static/js/api.js"></script>
+  <script>
+    if (!api.isLoggedIn()) {
+      toast('Please login to list a property', 'error');
+      setTimeout(() => window.location.href = 'login.html?next=add-property.html', 1200);
+    } else if (!api.isOwner() && !api.isAdmin()) {
+      // Tenant detected — hide form, show warning
+      document.querySelector('.add-property-card').style.display = 'none';
+      document.querySelector('.steps-bar')?.parentElement && (document.querySelector('.steps-bar').style.display = 'none');
+      document.getElementById('alertBox').innerHTML = `
+        <div class="tenant-warning-card fade-in">
+          <div class="tenant-warning-icon">🚫</div>
+          <div class="tenant-warning-title">Only Property Owners Can Add Listings</div>
+          <p class="tenant-warning-text">
+            You are currently logged in as a <strong>Tenant</strong>. 
