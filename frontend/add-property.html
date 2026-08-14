@@ -315,3 +315,17 @@
     document.getElementById('room_type').addEventListener('change', function () {
       const customGroup = document.getElementById('custom-room-group');
 
+      if (this.value === 'other') {
+        customGroup.style.display = 'block';
+      } else {
+        customGroup.style.display = 'none';
+        document.getElementById('custom_room_type').value = '';
+      }
+    });
+
+    document.getElementById('description').addEventListener('input', function () {
+      document.getElementById('descCount').textContent = `${this.value.length} / 500 characters`;
+    });
+
+    let selectedImages = [];
+
