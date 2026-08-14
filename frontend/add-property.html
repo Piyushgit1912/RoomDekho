@@ -398,3 +398,17 @@
       for (let i = 1; i < step; i++) { document.getElementById(`step${i}`).classList.add('done'); }
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    async function submitProperty() {
+      if (!document.getElementById('city').value.trim()) { toast('Please enter city', 'error'); return; }
+      if (
+        document.getElementById('room_type').value === 'other' &&
+        !document.getElementById('custom_room_type').value.trim()
+      ) {
+        toast('Please enter custom room type', 'error');
+        return;
+      }
+
+      const btn = document.getElementById('submitBtn');
+      const alertEl = document.getElementById('submitAlert');
+      btn.disabled = true; btn.textContent = 'Submitting…';
