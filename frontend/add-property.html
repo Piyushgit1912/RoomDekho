@@ -357,3 +357,16 @@
       selectedImages = [];
       tempImgs.forEach(f => {
         selectedImages.push(f);
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const i = selectedImages.length - 1;
+          const div = document.createElement('div');
+          div.className = 'preview-item';
+          div.innerHTML = `<img src="${e.target.result}" alt=""><button class="preview-remove" onclick="removeImage(${i})">✕</button>`;
+          grid.appendChild(div);
+        };
+        reader.readAsDataURL(f);
+      });
+    }
+
+    function nextStep(step) {
