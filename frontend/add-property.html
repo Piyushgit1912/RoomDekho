@@ -302,3 +302,16 @@
           <div class="tenant-warning-title">Only Property Owners Can Add Listings</div>
           <p class="tenant-warning-text">
             You are currently logged in as a <strong>Tenant</strong>. 
+            Only accounts registered as <strong>Property Owner</strong> can create and manage listings.
+          </p>
+          <div style="display:flex; flex-direction:column; gap:0.75rem; align-items:center">
+            <a href="property-list.html" class="btn btn-primary" style="font-size:0.95rem; padding:0.8rem 2rem">🔍 Browse Listings Instead</a>
+            <span style="color:var(--mid); font-size:0.85rem">or</span>
+            <a href="login.html" class="btn btn-outline" style="font-size:0.85rem" onclick="api.clearAuth()">Login with an Owner Account</a>
+          </div>
+        </div>
+      `;
+    }
+    document.getElementById('room_type').addEventListener('change', function () {
+      const customGroup = document.getElementById('custom-room-group');
+
