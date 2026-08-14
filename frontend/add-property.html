@@ -370,3 +370,17 @@
     }
 
     function nextStep(step) {
+      if (step === 2) {
+        if (!document.getElementById('title').value.trim()) { toast('Please enter a title', 'error'); return; }
+        if (!document.getElementById('room_type').value) { toast('Please select room type', 'error'); return; }
+        // Custom Room Type Validation
+        if (
+          document.getElementById('room_type').value === 'other' &&
+          !document.getElementById('custom_room_type').value.trim()
+        ) {
+          toast('Please enter custom room type', 'error');
+          return;
+        }
+        if (!document.getElementById('price').value) { toast('Please enter rent amount', 'error'); return; }
+        if (!document.getElementById('description').value.trim()) { toast('Please enter a description', 'error'); return; }
+      }
