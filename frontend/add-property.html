@@ -471,3 +471,22 @@
       // Click on map to place marker
       addMap.addListener('click', (e) => {
         placeMarker(e.latLng);
+      });
+
+      // Drag marker
+      addMarker.addListener('dragend', (e) => {
+        updateCoordinates(e.latLng.lat(), e.latLng.lng());
+      });
+
+      // Search box autocomplete
+      const searchInput = document.getElementById('mapSearchBox');
+      const autocomplete = new google.maps.places.Autocomplete(searchInput, {
+        componentRestrictions: { country: 'in' },
+        fields: ['geometry', 'name']
+      });
+      autocomplete.bindTo('bounds', addMap);
+
+      autocomplete.addListener('place_changed', () => {
+        const place = autocomplete.getPlace();
+        if (!place.geometry || !place.geometry.location) {
+          toast('Could not find that location. Try a different search.', 'error');
