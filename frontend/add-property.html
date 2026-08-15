@@ -431,3 +431,23 @@
         fd.append(a, document.getElementById(a)?.checked ? 'true' : 'false');
       });
       selectedImages.forEach(img => fd.append('images', img));
+
+      try {
+        await api.upload('/add-property/', fd);
+        toast('Property submitted for review! We\'ll approve it within 4 hours.', 'success');
+        setTimeout(() => window.location.href = 'dashboard.html', 1500);
+      } catch (e) {
+        let msg = 'Submission failed. ';
+        if (typeof e === 'object') msg = Object.values(e).flat().join('. ');
+        alertEl.innerHTML = `<div class="alert alert-error">${msg}</div>`;
+        btn.disabled = false; btn.textContent = '🚀 Submit Listing';
+      }
+    }
+
+    /* ===== Google Maps Functions ===== */
+    let addMap, addMarker;
+
+    function initAddPropertyMap() {
+      const defaultCenter = { lat: 20.5937, lng: 78.9629 }; // India center
+      addMap = new google.maps.Map(document.getElementById('addPropertyMap'), {
+        center: defaultCenter,
