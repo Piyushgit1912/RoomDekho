@@ -412,3 +412,22 @@
       const btn = document.getElementById('submitBtn');
       const alertEl = document.getElementById('submitAlert');
       btn.disabled = true; btn.textContent = 'Submitting…';
+
+      const fd = new FormData();
+      const videoFile = document.getElementById('videoInput').files[0];
+
+      if (videoFile) {
+        fd.append('video', videoFile);
+      }
+      const fields = { title, description, price, room_type, custom_room_type, furnished_status, gender_preference, location, city, state, pincode, contact_phone, contact_email };
+      Object.entries(fields).forEach(([k]) => {
+        fd.append(k, document.getElementById(k)?.value || '');
+      });
+      // Append coordinates if set
+      const lat = document.getElementById('latitude').value;
+      const lng = document.getElementById('longitude').value;
+      if (lat && lng) { fd.append('latitude', lat); fd.append('longitude', lng); }
+      ['wifi', 'ac', 'parking', 'food', 'gym', 'security', 'laundry'].forEach(a => {
+        fd.append(a, document.getElementById(a)?.checked ? 'true' : 'false');
+      });
+      selectedImages.forEach(img => fd.append('images', img));
