@@ -490,3 +490,23 @@
         const place = autocomplete.getPlace();
         if (!place.geometry || !place.geometry.location) {
           toast('Could not find that location. Try a different search.', 'error');
+          return;
+        }
+        addMap.setCenter(place.geometry.location);
+        addMap.setZoom(15);
+        placeMarker(place.geometry.location);
+      });
+    }
+
+    function placeMarker(latLng) {
+      addMarker.setPosition(latLng);
+      addMarker.setVisible(true);
+      addMap.panTo(latLng);
+      if (addMap.getZoom() < 13) addMap.setZoom(15);
+      updateCoordinates(latLng.lat(), latLng.lng());
+    }
+
+    function updateCoordinates(lat, lng) {
+      document.getElementById('latitude').value = parseFloat(lat).toFixed(7);
+      document.getElementById('longitude').value = parseFloat(lng).toFixed(7);
+      document.getElementById('coordsDisplay').style.display = 'flex';
