@@ -530,3 +530,22 @@
           addMap.setZoom(16);
           placeMarker(latLng);
           btn.classList.remove('loading');
+          btn.innerHTML = '📍 Use My Current Location';
+          toast('Location detected!', 'success');
+        },
+        (err) => {
+          btn.classList.remove('loading');
+          btn.innerHTML = '📍 Use My Current Location';
+          let msg = 'Could not get your location. ';
+          if (err.code === 1) msg += 'Permission denied. You can still click on the map to select a location.';
+          else if (err.code === 2) msg += 'Position unavailable.';
+          else msg += 'Request timed out.';
+          toast(msg, 'error');
+        },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+      );
+    }
+  </script>
+</body>
+
+</html>
