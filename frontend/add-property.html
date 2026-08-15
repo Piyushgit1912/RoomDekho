@@ -510,3 +510,23 @@
       document.getElementById('latitude').value = parseFloat(lat).toFixed(7);
       document.getElementById('longitude').value = parseFloat(lng).toFixed(7);
       document.getElementById('coordsDisplay').style.display = 'flex';
+      document.getElementById('latDisplay').textContent = `Lat: ${parseFloat(lat).toFixed(5)}`;
+      document.getElementById('lngDisplay').textContent = `Lng: ${parseFloat(lng).toFixed(5)}`;
+    }
+
+    function useCurrentLocation() {
+      const btn = document.getElementById('useLocationBtn');
+      if (!navigator.geolocation) {
+        toast('Geolocation is not supported by your browser', 'error');
+        return;
+      }
+      btn.classList.add('loading');
+      btn.innerHTML = '⏳ Getting location...';
+
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+          addMap.setCenter(latLng);
+          addMap.setZoom(16);
+          placeMarker(latLng);
+          btn.classList.remove('loading');
