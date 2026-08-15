@@ -451,3 +451,23 @@
       const defaultCenter = { lat: 20.5937, lng: 78.9629 }; // India center
       addMap = new google.maps.Map(document.getElementById('addPropertyMap'), {
         center: defaultCenter,
+        zoom: 5,
+        mapTypeControl: false,
+        streetViewControl: false,
+        fullscreenControl: true,
+        styles: [
+          { featureType: 'poi', stylers: [{ visibility: 'simplified' }] },
+          { featureType: 'transit', stylers: [{ visibility: 'off' }] }
+        ]
+      });
+
+      addMarker = new google.maps.Marker({
+        map: addMap,
+        draggable: true,
+        visible: false,
+        animation: google.maps.Animation.DROP
+      });
+
+      // Click on map to place marker
+      addMap.addListener('click', (e) => {
+        placeMarker(e.latLng);
