@@ -35,3 +35,21 @@
 
     <!-- Stats -->
     <div class="stats-grid" id="statsGrid">
+      <div style="grid-column:1/-1;text-align:center;padding:2rem">
+        <div class="spinner"></div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div style="display:flex; gap:0; border-bottom:2px solid var(--border); margin-bottom:2rem; overflow-x:auto">
+      <button class="tab-btn active" data-tab="properties" onclick="switchTab(this)">🏠 My Properties</button>
+      <button class="tab-btn" data-tab="favorites" onclick="switchTab(this)">❤️ Saved</button>
+      <button class="tab-btn" data-tab="inquiries" onclick="switchTab(this)">📩 Inquiries</button>
+      <button class="tab-btn" data-tab="profile" onclick="switchTab(this)">👤 Profile</button>
+      <!-- <button class="tab-btn" data-tab="admin-approvals" id="tabBtnAdmin" style="display:none" onclick="switchTab(this)">👑 Admin Approvals</button> -->
+    </div>
+
+    <style>
+      .tab-btn {
+        background: none;
+        border: none;
