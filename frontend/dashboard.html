@@ -17,3 +17,21 @@
     <a href="index.html" class="nav-brand">Room<span>Zey</span></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
+      <li><a href="property-list.html">Listings</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="add-property.html" class="btn btn-primary" id="navAddPropBtn">+ List Property</a>
+      <button class="btn btn-ghost" onclick="handleLogout()">Logout</button>
+    </div>
+    <div class="hamburger"><span></span><span></span><span></span></div>
+  </nav>
+
+  <div class="dashboard-page">
+    <!-- Header -->
+    <div class="dashboard-header">
+      <h1 style="font-size:2rem; margin-bottom:0.25rem" id="dashGreeting">Dashboard</h1>
+      <p style="color:var(--mid)" id="dashRole">Loading...</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid" id="statsGrid">
