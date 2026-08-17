@@ -215,3 +215,15 @@
         document.getElementById('myPropertiesContent').innerHTML = `<div class="alert alert-error">Could not load data. Make sure backend is running.</div>`;
       }
     }
+
+    function renderMyProperties(props) {
+      const isTenantUser = user?.user_type === 'tenant';
+      if (!props.length) {
+        if (isTenantUser) {
+          document.getElementById('myPropertiesContent').innerHTML = `<div class="empty-state"><div class="empty-icon">🏠</div><div class="empty-title">No listings</div><p style="color:var(--mid); font-size:0.9rem">Only Property Owners can add listings. Browse available rooms instead.</p><a href="property-list.html" class="btn btn-primary mt-2">Browse Listings</a></div>`;
+        } else {
+          document.getElementById('myPropertiesContent').innerHTML = `<div class="empty-state"><div class="empty-icon">🏠</div><div class="empty-title">No listings yet</div><a href="add-property.html" class="btn btn-primary mt-2">List Your First Property</a></div>`;
+        }
+        return;
+      }
+      document.getElementById('myPropertiesContent').innerHTML = `
