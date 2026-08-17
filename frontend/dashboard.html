@@ -275,3 +275,15 @@
         </div>
       </div>
     `).join('')}</div>`;
+      } catch (e) { el.innerHTML = `<div class="alert alert-error">Failed to load favorites.</div>`; }
+    }
+
+    async function loadInquiries() {
+      const el = document.getElementById('inquiriesContent');
+      try {
+        const inqs = await api.get('/my-inquiries/');
+        if (!inqs.length) { el.innerHTML = `<div class="empty-state"><div class="empty-icon">📩</div><div class="empty-title">No inquiries yet</div><a href="property-list.html" class="btn btn-primary mt-2">Browse and Inquire</a></div>`; return; }
+        el.innerHTML = `<div class="table-wrap"><table>
+      <thead><tr><th>Property</th><th>Message</th><th>Contact</th><th>Status</th><th>Date</th></tr></thead>
+      <tbody>
+        ${inqs.map(i => `<tr>
