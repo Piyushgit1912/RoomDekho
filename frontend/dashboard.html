@@ -179,3 +179,15 @@
     }
 
     function switchTab(btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tab = btn.dataset.tab;
+      // Commented out admin-approvals from standard tab switching
+      ['properties', 'favorites', 'inquiries', 'profile'/*, 'admin-approvals'*/].forEach(t => {
+        const el = document.getElementById(`tab-${t}`);
+        if (el) el.style.display = t === tab ? 'block' : 'none';
+      });
+      if (tab === 'favorites') loadFavs();
+      if (tab === 'inquiries') loadInquiries();
+      if (tab === 'profile') loadProfile();
+      // if (tab === 'admin-approvals') loadAdminApprovals();
