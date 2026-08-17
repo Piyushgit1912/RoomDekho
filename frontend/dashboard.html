@@ -143,3 +143,15 @@
     <h3 style="margin-bottom:1.25rem">Pending Approvals</h3>
     <div id="adminApprovalsContent"><div class="spinner"></div></div>
   </div>
+  -->
+  </div>
+
+  <footer>
+    <div class="footer-bottom">© 2025 RoomZey · <a href="index.html" style="color:var(--brand)">Home</a></div>
+  </footer>
+
+  <script src="../static/js/api.js"></script>
+  <script>
+    if (!api.isLoggedIn()) window.location.href = 'login.html?next=dashboard.html';
+
+    const user = api.user;
