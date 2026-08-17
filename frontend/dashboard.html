@@ -263,3 +263,15 @@
 
     async function loadFavs() {
       const el = document.getElementById('favoritesContent');
+      try {
+        const favs = await api.get('/favorites/');
+        if (!favs.length) { el.innerHTML = `<div class="empty-state"><div class="empty-icon">❤️</div><div class="empty-title">No saved properties</div><a href="property-list.html" class="btn btn-primary mt-2">Browse listings</a></div>`; return; }
+        el.innerHTML = `<div class="properties-grid">${favs.map(f => `
+      <div class="property-card" onclick="window.location.href='property-details.html?id=${f.property}'">
+        <div class="card-body">
+          <div class="card-price">${formatPrice(f.property_price)} <span>/ month</span></div>
+          <div class="card-title">${f.property_title}</div>
+          <div class="card-location">📍 ${f.property_city}</div>
+        </div>
+      </div>
+    `).join('')}</div>`;
