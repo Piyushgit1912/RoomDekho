@@ -227,3 +227,15 @@
         return;
       }
       document.getElementById('myPropertiesContent').innerHTML = `
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Property</th><th>Type</th><th>Price</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+        <tbody>
+          ${props.map(p => `
+            <tr>
+              <td><div style="font-weight:600">${p.title}</div><div style="font-size:0.8rem;color:var(--mid)">📍 ${p.city}</div></td>
+              <td style="text-transform:capitalize">${p.room_type?.replace('_', ' ')}</td>
+              <td style="font-weight:600;color:var(--brand)">${formatPrice(p.price)}/mo</td>
+              <td>${statusBadge(p.status)}</td>
+              <td style="font-size:0.85rem;color:var(--mid)">${new Date(p.created_at).toLocaleDateString('en-IN')}</td>
+              <td>
