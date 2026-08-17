@@ -155,3 +155,15 @@
     if (!api.isLoggedIn()) window.location.href = 'login.html?next=dashboard.html';
 
     const user = api.user;
+    const isAdmin = api.isAdmin();
+
+    document.getElementById('dashGreeting').textContent = `Hello, ${user?.name?.split(' ')[0] || 'there'} 👋`;
+    // Commented out Admin check in role title
+    /*
+    if (isAdmin) {
+      document.getElementById('dashRole').textContent = 'System Administrator';
+      document.getElementById('tabBtnAdmin').style.display = 'block';
+    } else {
+      document.getElementById('dashRole').textContent = user?.user_type === 'owner' ? 'Property Owner Dashboard' : 'Tenant Dashboard';
+    }
+    */
