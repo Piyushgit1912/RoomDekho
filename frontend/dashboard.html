@@ -203,3 +203,15 @@
         const props = await api.get('/my-properties/');
         const favs = await api.get('/favorites/');
         const inquiries = await api.get('/my-inquiries/');
+        document.getElementById('statsGrid').innerHTML = `
+      <div class="stat-card"><div class="stat-card-num">${props.length || 0}</div><div class="stat-card-label">My Listings</div></div>
+      <div class="stat-card"><div class="stat-card-num">${favs.length || 0}</div><div class="stat-card-label">Saved Properties</div></div>
+      <div class="stat-card"><div class="stat-card-num">${inquiries.length || 0}</div><div class="stat-card-label">Inquiries Sent</div></div>
+      <div class="stat-card"><div class="stat-card-num">${props.filter(p => p.status === 'approved').length || 0}</div><div class="stat-card-label">Active Listings</div></div>
+    `;
+        renderMyProperties(props);
+      } catch (e) {
+        document.getElementById('statsGrid').innerHTML = '';
+        document.getElementById('myPropertiesContent').innerHTML = `<div class="alert alert-error">Could not load data. Make sure backend is running.</div>`;
+      }
+    }
