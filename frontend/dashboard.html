@@ -191,3 +191,15 @@
       if (tab === 'inquiries') loadInquiries();
       if (tab === 'profile') loadProfile();
       // if (tab === 'admin-approvals') loadAdminApprovals();
+    }
+
+    const statusBadge = s => {
+      const colors = { approved: '#10B981', pending: '#F59E0B', rejected: '#EF4444' };
+      return `<span style="background:${colors[s] || '#6B7280'}20;color:${colors[s] || '#6B7280'};padding:3px 10px;border-radius:50px;font-size:0.75rem;font-weight:600;text-transform:capitalize">${s}</span>`;
+    };
+
+    async function loadStats() {
+      try {
+        const props = await api.get('/my-properties/');
+        const favs = await api.get('/favorites/');
+        const inquiries = await api.get('/my-inquiries/');
