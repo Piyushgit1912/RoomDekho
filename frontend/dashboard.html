@@ -251,3 +251,15 @@
     </div>
   `;
     }
+
+    async function deleteProperty(id) {
+      if (!confirm('Are you sure you want to delete this listing?')) return;
+      try {
+        await api.delete(`/delete-property/${id}/`);
+        toast('Property deleted', 'success');
+        loadStats();
+      } catch (e) { toast('Failed to delete', 'error'); }
+    }
+
+    async function loadFavs() {
+      const el = document.getElementById('favoritesContent');
