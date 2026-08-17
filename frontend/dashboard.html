@@ -239,3 +239,15 @@
               <td>${statusBadge(p.status)}</td>
               <td style="font-size:0.85rem;color:var(--mid)">${new Date(p.created_at).toLocaleDateString('en-IN')}</td>
               <td>
+                <div style="display:flex;gap:6px">
+                  <a href="property-details.html?id=${p.id}" class="btn btn-ghost" style="padding:4px 10px;font-size:0.8rem">View</a>
+                  <button onclick="deleteProperty(${p.id})" class="btn btn-ghost" style="padding:4px 10px;font-size:0.8rem;color:#EF4444">Delete</button>
+                </div>
+              </td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>
+    </div>
+  `;
+    }
