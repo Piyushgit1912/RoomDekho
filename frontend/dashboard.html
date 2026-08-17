@@ -167,3 +167,15 @@
       document.getElementById('dashRole').textContent = user?.user_type === 'owner' ? 'Property Owner Dashboard' : 'Tenant Dashboard';
     }
     */
+    document.getElementById('dashRole').textContent = user?.user_type === 'owner' ? 'Property Owner Dashboard' : 'Tenant Dashboard';
+
+    // Hide add-property buttons for tenants
+    const isTenantUser = user?.user_type === 'tenant';
+    if (isTenantUser) {
+      const navAddBtn = document.getElementById('navAddPropBtn');
+      if (navAddBtn) navAddBtn.style.display = 'none';
+      const tabAddBtn = document.getElementById('tabAddPropBtn');
+      if (tabAddBtn) tabAddBtn.style.display = 'none';
+    }
+
+    function switchTab(btn) {
