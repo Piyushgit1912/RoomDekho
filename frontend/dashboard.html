@@ -383,3 +383,17 @@
                   </tr>
                 `).join('')}
               </tbody>
+            </table>
+          </div>
+        `;
+      } catch(e) {
+        el.innerHTML = `<div class="alert alert-error">Failed to load pending properties. Please check if you are logged in as an administrator.</div>`;
+      }
+    }
+    
+    async function verifyProperty(id, action) {
+      try {
+        await api.post(`/admin/properties/${id}/approve/`, { action: action });
+        toast(`Property ${action}d successfully`, 'success');
+        loadAdminApprovals();
+      } catch(e) {
