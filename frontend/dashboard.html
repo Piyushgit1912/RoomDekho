@@ -342,3 +342,17 @@
       try {
         const props = await api.get('/admin/properties/?status=pending');
         if (!props.length) {
+          el.innerHTML = `<div class="empty-state">
+            <div class="empty-icon">✅</div>
+            <div class="empty-title">All caught up!</div>
+            <p>No listings are pending verification at the moment.</p>
+          </div>`;
+          return;
+        }
+        
+        el.innerHTML = `
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Property</th>
