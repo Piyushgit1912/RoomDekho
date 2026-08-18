@@ -287,3 +287,17 @@
       <thead><tr><th>Property</th><th>Message</th><th>Contact</th><th>Status</th><th>Date</th></tr></thead>
       <tbody>
         ${inqs.map(i => `<tr>
+          <td><div style="font-weight:600">${i.property_title}</div><div style="font-size:0.8rem;color:var(--mid)">${i.property_city}</div></td>
+          <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${i.message}</td>
+          <td>${i.contact_number}</td>
+          <td>${statusBadge(i.status)}</td>
+          <td style="font-size:0.8rem;color:var(--mid)">${new Date(i.date).toLocaleDateString('en-IN')}</td>
+        </tr>`).join('')}
+      </tbody>
+    </table></div>`;
+      } catch (e) { el.innerHTML = `<div class="alert alert-error">Failed to load inquiries.</div>`; }
+    }
+
+    async function loadProfile() {
+      const el = document.getElementById('profileContent');
+      try {
