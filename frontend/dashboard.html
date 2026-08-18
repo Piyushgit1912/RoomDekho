@@ -328,3 +328,17 @@
       } catch (e) { el.innerHTML = `<div class="alert alert-error">Failed to load profile.</div>`; }
     }
 
+    async function saveProfile() {
+      try {
+        await api.patch('/profile/', { name: document.getElementById('pName').value, phone: document.getElementById('pPhone').value });
+        toast('Profile updated!', 'success');
+      } catch (e) { toast('Failed to update profile', 'error'); }
+    }
+
+    /* Commented out admin approvals logic
+    async function loadAdminApprovals() {
+      const el = document.getElementById('adminApprovalsContent');
+      el.innerHTML = `<div class="spinner"></div>`;
+      try {
+        const props = await api.get('/admin/properties/?status=pending');
+        if (!props.length) {
