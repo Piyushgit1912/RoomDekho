@@ -397,3 +397,16 @@
         toast(`Property ${action}d successfully`, 'success');
         loadAdminApprovals();
       } catch(e) {
+        toast(`Failed to ${action} property`, 'error');
+      }
+    }
+    
+    window.verifyProperty = verifyProperty;
+    */
+
+    loadStats();
+    // if (isAdmin) loadAdminApprovals();
+  </script>
+</body>
+
+</html>
