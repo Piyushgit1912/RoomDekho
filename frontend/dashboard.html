@@ -369,3 +369,17 @@
                     <td>
                       <a href="property-details.html?id=${p.id}" target="_blank" style="font-weight:600;color:var(--brand)">${p.title}</a>
                       <div style="font-size:0.8rem;color:var(--mid)">Type: ${p.room_type}</div>
+                    </td>
+                    <td>${p.city}</td>
+                    <td>${p.owner_name || 'Owner'}</td>
+                    <td style="font-weight:600">${formatPrice(p.price)}/mo</td>
+                    <td><span style="background:#F59E0B20;color:#F59E0B;padding:3px 10px;border-radius:50px;font-size:0.75rem;font-weight:600">Pending</span></td>
+                    <td>
+                      <div style="display:flex;gap:8px">
+                        <button class="btn btn-primary" style="padding:6px 12px;font-size:0.8rem" onclick="verifyProperty(${p.id}, 'approve')">Approve</button>
+                        <button class="btn btn-outline" style="padding:6px 12px;font-size:0.8rem;color:#EF4444;border-color:#EF4444" onclick="verifyProperty(${p.id}, 'reject')">Reject</button>
+                      </div>
+                    </td>
+                  </tr>
+                `).join('')}
+              </tbody>
