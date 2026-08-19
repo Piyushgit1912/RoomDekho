@@ -102,3 +102,23 @@
   <a href="index.html" class="nav-brand">Room<span>Zey</span></a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
+    <li><a href="property-list.html">Listings</a></li>
+    <li><a href="dashboard.html">My Dashboard</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="user-menu" id="userMenu">
+      <div class="user-menu-trigger" onclick="toggleUserMenu(event)">
+        <div style="width:36px;height:36px;border-radius:50%;background:var(--brand-light);color:var(--brand);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem" id="avatarLetter">
+          A
+        </div>
+        <span style="font-size:0.9rem;font-weight:500;color:var(--dark)" id="navUsername">Admin</span>
+        <span style="font-size:0.8rem;color:var(--mid)">▼</span>
+      </div>
+      <div class="user-dropdown">
+        <div class="user-dropdown-info">
+          <div class="user-dropdown-name" id="dropdownName">Admin Portal</div>
+          <div class="user-dropdown-role" id="dropdownRole">Superadministrator</div>
+        </div>
+        <a href="dashboard.html" class="user-dropdown-item">👤 My Dashboard</a>
+        <div class="user-dropdown-item logout" onclick="handleLogout()">🚪 Log Out</div>
+      </div>
