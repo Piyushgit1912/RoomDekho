@@ -40,3 +40,23 @@
       text-transform: uppercase;
       letter-spacing: 0.05em;
       padding: 4px 12px;
+      border-radius: 50px;
+      margin-bottom: 1rem;
+    }
+    .phase-timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .phase-card {
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 1.5rem;
+      position: relative;
+      transition: var(--transition);
+    }
+    .phase-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-sm);
