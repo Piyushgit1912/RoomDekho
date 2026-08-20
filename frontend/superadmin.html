@@ -222,3 +222,16 @@ async function loadAllListings() {
     if (!props.length) {
       el.innerHTML = '<p style="color:var(--mid);text-align:center;padding:2rem">No listings found on the platform.</p>';
       return;
+    }
+    
+    el.innerHTML = `
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Property</th>
+              <th>City</th>
+              <th>Owner</th>
+              <th>Price</th>
+              <th>Status</th>
+              <th>Moderation</th>
