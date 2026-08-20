@@ -274,3 +274,16 @@ async function deleteListing(id) {
 }
 
 // Populate user menu details on load
+if (api.isLoggedIn()) {
+  const user = api.user;
+  document.getElementById('navUsername').textContent = user.name.split(' ')[0];
+  document.getElementById('avatarLetter').textContent = user.name[0].toUpperCase();
+  document.getElementById('dropdownName').textContent = user.name;
+  document.getElementById('dropdownRole').textContent = user.user_type === 'admin' || user.is_staff ? 'Superadministrator' : 'Owner';
+  loadAllListings();
+} else {
+  window.location.href = 'login.html?next=superadmin.html';
+}
+</script>
+</body>
+</html>
