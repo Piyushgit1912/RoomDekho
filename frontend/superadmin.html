@@ -235,3 +235,16 @@ async function loadAllListings() {
               <th>Price</th>
               <th>Status</th>
               <th>Moderation</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${props.map(p => `
+              <tr id="admin-prop-${p.id}">
+                <td>
+                  <a href="property-details.html?id=${p.id}" target="_blank" style="font-weight:600;color:var(--brand)">${p.title}</a>
+                  <div style="font-size:0.8rem;color:var(--mid)">Type: ${p.room_type.replace('_',' ')}</div>
+                </td>
+                <td>${p.city}</td>
+                <td>${p.owner_name || 'Owner'}</td>
+                <td style="font-weight:600">${formatPrice(p.price)}/mo</td>
+                <td><span style="background:#10B98120;color:#10B981;padding:3px 10px;border-radius:50px;font-size:0.75rem;font-weight:600">Live</span></td>
