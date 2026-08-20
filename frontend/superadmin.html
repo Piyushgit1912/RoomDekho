@@ -248,3 +248,16 @@ async function loadAllListings() {
                 <td>${p.owner_name || 'Owner'}</td>
                 <td style="font-weight:600">${formatPrice(p.price)}/mo</td>
                 <td><span style="background:#10B98120;color:#10B981;padding:3px 10px;border-radius:50px;font-size:0.75rem;font-weight:600">Live</span></td>
+                <td>
+                  <button class="btn btn-outline" style="padding:5px 12px;font-size:0.78rem;color:#EF4444;border-color:#EF4444" onclick="deleteListing(${p.id})">Remove</button>
+                </td>
+              </tr>
+            `).join('')}
+          </tbody>
+        </table>
+      </div>
+    `;
+  } catch(e) {
+    el.innerHTML = '<div class="alert alert-error">Failed to load platform listings. Access restricted to Admin accounts.</div>';
+  }
+}
