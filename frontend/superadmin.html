@@ -261,3 +261,16 @@ async function loadAllListings() {
     el.innerHTML = '<div class="alert alert-error">Failed to load platform listings. Access restricted to Admin accounts.</div>';
   }
 }
+
+async function deleteListing(id) {
+  if (!confirm('Are you sure you want to remove this listing from the platform?')) return;
+  try {
+    await api.delete(`/delete-property/${id}/`);
+    toast('Listing removed by administrator', 'success');
+    loadAllListings();
+  } catch(e) {
+    toast('Failed to delete listing', 'error');
+  }
+}
+
+// Populate user menu details on load
