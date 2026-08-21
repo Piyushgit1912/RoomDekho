@@ -12,3 +12,10 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='property',
+            name='custom_room_type',
+            field=models.CharField(blank=True, max_length=100),
+        ),
+        migrations.AddField(
+            model_name='property',
+            name='independence_type',
+            field=models.CharField(choices=[('independent', 'Independent'), ('non_independent', 'Non-Independent')], default='independent', max_length=20),
