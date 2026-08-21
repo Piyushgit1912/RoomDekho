@@ -6,3 +6,6 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('properties', '0003_property_custom_room_type_property_independence_type_and_more'),
+    ]
+
