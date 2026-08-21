@@ -2,17 +2,3 @@
 
 from django.db import migrations, models
 
-
-class Migration(migrations.Migration):
-
-    dependencies = [
-        ('properties', '0003_property_custom_room_type_property_independence_type_and_more'),
-    ]
-
-    operations = [
-        migrations.AlterField(
-            model_name='property',
-            name='status',
-            field=models.CharField(choices=[('pending', 'Pending Approval'), ('approved', 'Approved'), ('rejected', 'Rejected')], default='approved', max_length=10),
-        ),
-    ]
