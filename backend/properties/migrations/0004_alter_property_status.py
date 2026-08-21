@@ -9,3 +9,7 @@ class Migration(migrations.Migration):
         ('properties', '0003_property_custom_room_type_property_independence_type_and_more'),
     ]
 
+    operations = [
+        migrations.AlterField(
+            model_name='property',
+            name='status',
