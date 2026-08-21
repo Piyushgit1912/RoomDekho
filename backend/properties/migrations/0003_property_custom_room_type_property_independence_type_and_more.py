@@ -5,24 +5,3 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        ('properties', '0002_initial'),
-    ]
-
-    operations = [
-        migrations.AddField(
-            model_name='property',
-            name='custom_room_type',
-            field=models.CharField(blank=True, max_length=100),
-        ),
-        migrations.AddField(
-            model_name='property',
-            name='independence_type',
-            field=models.CharField(choices=[('independent', 'Independent'), ('non_independent', 'Non-Independent')], default='independent', max_length=20),
-        ),
-        migrations.AlterField(
-            model_name='property',
-            name='room_type',
-            field=models.CharField(choices=[('single', 'Single Room'), ('double', 'Double Sharing'), ('triple', 'Triple Sharing'), ('flat_1bhk', '1 BHK Flat'), ('flat_2bhk', '2 BHK Flat'), ('flat_3bhk', '3 BHK Flat'), ('pg', 'PG'), ('hostel', 'Hostel'), ('studio', 'Studio Apartment'), ('other', 'Other (Custom)')], max_length=20),
-        ),
-    ]
