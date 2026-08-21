@@ -13,3 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='property',
             name='status',
+            field=models.CharField(choices=[('pending', 'Pending Approval'), ('approved', 'Approved'), ('rejected', 'Rejected')], default='approved', max_length=10),
+        ),
+    ]
