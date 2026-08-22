@@ -12,3 +12,8 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='PropertyVideo',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('video', models.FileField(upload_to='property_videos/')),
+                ('uploaded_at', models.DateTimeField(auto_now_add=True)),
