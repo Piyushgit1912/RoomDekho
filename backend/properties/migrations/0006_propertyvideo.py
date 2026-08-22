@@ -17,3 +17,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('video', models.FileField(upload_to='property_videos/')),
                 ('uploaded_at', models.DateTimeField(auto_now_add=True)),
+                ('property', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='videos', to='properties.property')),
+            ],
+        ),
+    ]
