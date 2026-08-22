@@ -8,3 +8,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('properties', '0005_property_latitude_property_longitude'),
+    ]
+
+    operations = [
+        migrations.CreateModel(
