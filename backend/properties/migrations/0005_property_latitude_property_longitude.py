@@ -4,3 +4,9 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
+
+    dependencies = [
+        ('properties', '0004_alter_property_status'),
+    ]
+
+    operations = [
