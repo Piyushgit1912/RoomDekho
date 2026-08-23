@@ -50,3 +50,20 @@ samples = [
     },
     {
         'title': '1 BHK Flat for Rent in Baner',
+        'city': 'Pune', 'location': 'Baner, Near Balewadi',
+        'price': 14000, 'room_type': 'flat_1bhk',
+        'furnished_status': 'semi', 'gender_preference': 'any',
+        'parking': True, 'security': True, 'status': 'approved',
+        'description': 'Modern 1 BHK in a gated society with covered parking. Ideal for IT professionals. Close to Pune-Bangalore highway.',
+    },
+    {
+        'title': 'Affordable Double Sharing Room in Andheri',
+        'city': 'Mumbai', 'location': 'Andheri West',
+        'price': 8500, 'room_type': 'double',
+        'furnished_status': 'furnished', 'gender_preference': 'male',
+        'wifi': True, 'ac': True, 'status': 'approved',
+        'description': 'Spacious double-sharing room with AC and WiFi in the heart of Andheri West. 5 minutes from metro station.',
+    },
+    {
+        'title': 'Hostel Room near BITS Pilani Campus',
+        'city': 'Hyderabad', 'location': 'Gachibowli',
