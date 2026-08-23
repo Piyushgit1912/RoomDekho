@@ -67,3 +67,20 @@ samples = [
     {
         'title': 'Hostel Room near BITS Pilani Campus',
         'city': 'Hyderabad', 'location': 'Gachibowli',
+        'price': 5500, 'room_type': 'hostel',
+        'furnished_status': 'furnished', 'gender_preference': 'any',
+        'wifi': True, 'food': True, 'gym': True, 'laundry': True, 'status': 'approved',
+        'description': 'Budget-friendly hostel with all amenities — meals, gym, laundry, and high-speed internet. Great for students and freshers.',
+    },
+]
+
+for s in samples:
+    prop, created = Property.objects.get_or_create(
+        title=s['title'], owner=owner, defaults=s)
+    if created:
+        print(f"  ✅ Created: {prop.title}")
+    else:
+        print(f"  ⚠️  Exists:  {prop.title}")
+
+print("\n✅ Seed data complete!")
+print("You can now log in as: username=sample_owner  password=password123")
