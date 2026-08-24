@@ -112,3 +112,59 @@ Enter your desired username, email, and password when prompted.
 
 ```bash
 python manage.py shell < seed_data.py
+```
+*(If the above command doesn't work in Windows PowerShell, use `Get-Content seed_data.py | python manage.py shell`)*
+
+This creates a sample owner account and 5 approved property listings so you can see the app working immediately.
+
+Sample owner credentials:
+- **Username:** `sample_owner`
+- **Password:** `password123`
+
+---
+
+### STEP 7 – Start the Backend Server
+
+```bash
+python manage.py runserver
+```
+
+The API will be live at: **http://localhost:8000**
+Django Admin panel: **http://localhost:8000/admin/**
+
+---
+
+### STEP 8 – Open the Frontend
+
+Open a **new terminal tab/window** (keep the Django server running), then from the project root:
+
+```bash
+cd ..
+python -m http.server 5500
+```
+
+Now open your browser and go to:
+**http://localhost:5500/frontend/index.html**
+
+> **Alternative:** You can also just double-click `frontend/index.html` directly in your file explorer to open it in a browser — but the live server method above is recommended for correct relative paths.
+
+---
+
+## 🔗 API Endpoints Reference
+
+| Method | Endpoint | Auth | Description |
+|--------|----------|------|-------------|
+| POST | `/api/register/` | No | Register new user |
+| POST | `/api/login/` | No | Login, returns token |
+| POST | `/api/logout/` | Yes | Logout |
+| GET/PATCH | `/api/profile/` | Yes | View/update profile |
+| GET | `/api/properties/` | No | List & search properties |
+| GET | `/api/properties/{id}/` | No | Property detail |
+| POST | `/api/add-property/` | Owner | Add new listing |
+| PUT | `/api/update-property/{id}/` | Owner | Edit listing |
+| DELETE | `/api/delete-property/{id}/` | Owner | Delete listing |
+| GET | `/api/my-properties/` | Owner | Your listings |
+| GET/POST | `/api/favorites/` | Yes | Saved properties |
+| POST | `/api/inquiries/` | Yes | Send inquiry |
+| GET | `/api/my-inquiries/` | Yes | View sent inquiries |
+| GET/POST | `/api/properties/{id}/reviews/` | Mixed | Reviews |
