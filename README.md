@@ -168,3 +168,60 @@ Now open your browser and go to:
 | POST | `/api/inquiries/` | Yes | Send inquiry |
 | GET | `/api/my-inquiries/` | Yes | View sent inquiries |
 | GET/POST | `/api/properties/{id}/reviews/` | Mixed | Reviews |
+| GET | `/api/admin/properties/` | Admin | All listings |
+| POST | `/api/admin/properties/{id}/approve/` | Admin | Approve/reject |
+
+### Search & Filter Parameters for `GET /api/properties/`
+
+| Parameter | Example | Description |
+|-----------|---------|-------------|
+| `search` | `?search=Mumbai` | Search by city/location/title |
+| `city` | `?city=Pune` | Filter by city |
+| `room_type` | `?room_type=pg` | single/double/pg/hostel/flat_1bhk/flat_2bhk |
+| `min_price` | `?min_price=5000` | Minimum rent |
+| `max_price` | `?max_price=15000` | Maximum rent |
+| `furnished_status` | `?furnished_status=furnished` | furnished/semi/unfurnished |
+| `gender_preference` | `?gender_preference=female` | any/male/female |
+| `wifi` | `?wifi=true` | WiFi available |
+| `ac` | `?ac=true` | AC available |
+| `parking` | `?parking=true` | Parking available |
+| `food` | `?food=true` | Meals included |
+| `ordering` | `?ordering=price` | price/-price/-created_at |
+
+---
+
+## 👥 User Roles
+
+| Role | How to get | Capabilities |
+|------|------------|--------------|
+| **Tenant** | Register with "I'm a Tenant" | Search, save favorites, send inquiries, write reviews |
+| **Owner** | Register with "I'm an Owner" | All tenant features + add/edit/delete listings |
+| **Admin** | Set via Django admin panel | Approve/reject listings, manage all users |
+
+To make a user an admin via Django Admin:
+1. Go to `http://localhost:8000/admin/`
+2. Open **Users → CustomUser**
+3. Check **Staff status** and **Superuser status** for that user
+
+---
+
+## 🌐 Frontend Pages
+
+| File | URL | Description |
+|------|-----|-------------|
+| `index.html` | `/` | Home: hero search, city cards, featured listings |
+| `property-list.html` | `/property-list.html` | Search + filter sidebar + property cards |
+| `property-details.html` | `/property-details.html?id=1` | Gallery, amenities, reviews, inquiry modal |
+| `add-property.html` | `/add-property.html` | 3-step listing form with image upload |
+| `dashboard.html` | `/dashboard.html` | My listings, favorites, inquiries, profile |
+| `login.html` | `/login.html` | Email/password login |
+| `register.html` | `/register.html` | Tenant or Owner registration |
+| `about.html` | `/about.html` | About page |
+| `superadmin.html` | `/superadmin.html` | Admin dashboard for overall platform management |
+
+---
+
+## 🔒 Security Features
+- Token-based authentication (DRF TokenAuth)
+- Passwords hashed with Django's PBKDF2
+- CORS headers configured for cross-origin API access
