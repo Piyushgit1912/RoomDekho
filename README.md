@@ -225,3 +225,59 @@ To make a user an admin via Django Admin:
 - Token-based authentication (DRF TokenAuth)
 - Passwords hashed with Django's PBKDF2
 - CORS headers configured for cross-origin API access
+- Owners can only edit/delete their own properties
+- Admin approval required before listings go live
+
+---
+
+## 🛠️ Common Issues & Fixes
+
+**"Module not found" error:**
+Make sure your virtual environment is activated and you ran `pip install -r requirements.txt`.
+
+**CORS error in browser:**
+Make sure the Django server is running on port 8000 and `CORS_ALLOW_ALL_ORIGINS = True` is in settings.py.
+
+**Images not loading:**
+Make sure you're running the Django server — it serves media files in development.
+
+**"No properties found" on home page:**
+Run the seed data script: `python manage.py shell < seed_data.py`
+
+---
+
+## ⚙️ Switch to PostgreSQL (Optional)
+
+1. Install: `pip install psycopg2-binary`
+2. In `backend/roomdekho/settings.py`, replace the DATABASES block:
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'roomdekho_db',
+        'USER': 'postgres',
+        'PASSWORD': 'your_password',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+```
+
+---
+
+## 🚢 Production Checklist
+- [ ] Set `DEBUG = False`
+- [ ] Use a strong random `SECRET_KEY`
+- [ ] Set `ALLOWED_HOSTS` to your domain
+- [ ] Switch to PostgreSQL
+- [ ] Use `gunicorn` as WSGI server
+- [ ] Use `nginx` as reverse proxy
+- [ ] Run `python manage.py collectstatic`
+- [ ] Set up environment variables (do not hardcode secrets)
+
+---
+
+*Built with ❤️ for students and working professionals across India*
+
+
